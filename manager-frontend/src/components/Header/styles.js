@@ -7,6 +7,7 @@ export const HeaderStyle = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 400;
 
   div {
     display: flex;

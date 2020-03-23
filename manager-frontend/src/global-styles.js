@@ -10,12 +10,15 @@ export default createGlobalStyle`
   padding: 0;
   outline: none;
   box-sizing: border-box;
+}
+
+
+body {
   font-family: 'Lato', sans-serif;
-  font-weight: 400;
+  background-color: #f8f8f9;
 }
 
-background-color: {
-  color: #f8f8f9;
+button {
+  cursor: pointer;
 }
-
 `;

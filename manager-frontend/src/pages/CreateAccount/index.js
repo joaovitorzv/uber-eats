@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../../components/Header';
-import { Container } from './styles';
+import { Container, FormContainer, ItemContainer, Input, InputBox, Button } from './styles';
 
 export default function CreateAccount() {
   return (
@@ -9,12 +9,36 @@ export default function CreateAccount() {
       <Header />
       <Container>
         <div className="home-container">
-            <div className="item-container">
+            <ItemContainer>
               <h2>Partner with Uber Eats and do more for your restaurant</h2>
-            </div>
-            <div className="item-container">
-              <h2>form go here</h2>
-            </div>
+              <p>Uber Eats is a technology platform helping businesses worldwide expand their reach, delight customers, and boost their bottom line. Partner with us today</p>
+            </ItemContainer>
+
+
+            <FormContainer className="item-container  form-container">
+              <h2>Partner with us</h2>
+              <InputBox>
+                <Input type="text" placeholder="Restaurant Name"></Input>
+                <Input type="text" placeholder="Restaurant Address"></Input>
+              </InputBox>
+
+              <InputBox>
+                <Input type="text" placeholder="Full Name"></Input>
+                <Input type="email" placeholder="Email"></Input>
+                <Input type="password" placeholder="Password"></Input>
+              </InputBox>
+
+              <InputBox>
+                <Input type="text" placeholder="Type of cuisine"></Input> 
+              </InputBox>
+              
+              <InputBox>
+                <label>Import your restaurant logo</label>
+                <Input type="file" placeholder="Logo" />
+              </InputBox>
+
+              <Button type="submit">Submit</Button>
+            </FormContainer>
         </div>
       </Container>
       </>
