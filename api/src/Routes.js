@@ -10,4 +10,8 @@ routes.post('/sessions', sessionController.store);
 
 routes.use(authMiddleware);
 
+routes.get('/', (req, res) => {
+  return res.json({ working: true });
+})
+
 module.exports = routes;

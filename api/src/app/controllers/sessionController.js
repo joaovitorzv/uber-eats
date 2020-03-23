@@ -27,7 +27,7 @@ class sessionController {
       return res.status(400).json({ error: 'Email not found' });
     }
 
-    if (!(await restaurant.checkPasswrd(password))) {
+    if (!(await restaurant.checkPassword(password))) {
       return res.status(401).json({ error: 'Invalid password '});
     }
 
