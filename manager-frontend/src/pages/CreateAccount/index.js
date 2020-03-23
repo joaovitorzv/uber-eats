@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Header from '../../components/Header';
-import { Container, FormContainer, ItemContainer, Input, InputBox, Button } from './styles';
+import { Container, FormContainer, ItemContainer, InputBox } from './styles';
+import { Button, Input } from '../../global-styles';
 
 export default function CreateAccount() {
   return (
