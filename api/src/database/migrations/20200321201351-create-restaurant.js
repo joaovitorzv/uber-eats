@@ -64,3 +64,4 @@ module.exports = {
     return queryInterface.dropTable('restaurants');
   }
 };
+

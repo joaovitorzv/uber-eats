@@ -1,8 +1,8 @@
 const express = require("express");
-
 const cors = require("cors");
 
 const Routes =  require('./Routes');
+require("./database");
 
 class App {
   constructor() {
