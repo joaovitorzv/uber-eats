@@ -3,8 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css?family=Lato:400,900&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +12,7 @@ export default createGlobalStyle`
 
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: #f8f8f9;
 }
 
