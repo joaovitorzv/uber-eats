@@ -1,4 +1,4 @@
 # UberEats
-Project based on UberEats
+Simple UberEats version
 
 ## In development 🚀
