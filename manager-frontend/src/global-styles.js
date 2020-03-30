@@ -63,6 +63,6 @@ export const WhiteButton = styled.button`
   &:hover {
     background-color: black;
     color: white;
-    border: 2px solid rgb(67, 164, 34);
+    border: 2px solid #06C167;
   }
 `;

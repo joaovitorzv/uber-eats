@@ -7,6 +7,7 @@ import PrivateRoute from './components/PrivateRoute';
 import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Menu from './pages/Menu';
 
 export default function Routes() {
   return (  
@@ -15,7 +16,8 @@ export default function Routes() {
         <PublicRoute restricted={true} path="/" exact component={CreateAccount} />
         <PublicRoute restricted={true} path="/session" component={Login} />
 
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/dashboard" exact component={Dashboard} />
+        <PrivateRoute path="/dashboard/menu" component={Menu} />
       </Switch>
     </BrowserRouter>
   )
