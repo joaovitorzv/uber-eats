@@ -53,3 +53,16 @@ export const Button = styled.button`
     background-color: rgb(50, 130, 30)
   }
 `;
+
+export const WhiteButton = styled.button`
+  border: none;
+  background-color: white;
+  padding: 5px 15px;
+  border: 2px transparent;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid rgb(67, 164, 34);
+  }
+`;

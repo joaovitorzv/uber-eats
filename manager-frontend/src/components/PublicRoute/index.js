@@ -3,7 +3,6 @@ import {Route, Redirect} from 'react-router-dom';
 import { isAuthenticated } from '../../utils/auth';
 
 const PublicRoute = ({component: Component, restricted, ...rest}) => {
-  console.log(isAuthenticated());
   return (
     <Route {...rest} render={props =>(
       isAuthenticated() && restricted ?

@@ -4,9 +4,9 @@ import Logo from '../../assets/uber-eats-logo.png';
 import { Footer, Container } from './styles';
 import { Button, Input } from '../../global-styles';
 
-import { signIn, isAuthenticated } from '../../utils/auth';
+import { signIn } from '../../utils/auth';
 
-export default function Login() {
+export default function Login({ history }) {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,10 +14,9 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const user = { email, password}
-    signIn(password);
-    console.log(user);
-
-    console.log(isAuthenticated());
+    signIn(user.password);
+    
+    history.push('/dashboard');
   }
 
   return (
@@ -41,7 +40,7 @@ export default function Login() {
           />
           <Button type="submit">Login</Button>
           </form>
-          <a href="/signup">Create an account</a>
+          <a href="/">Create an account</a>
         </div>  
     </Container>
 

@@ -3,7 +3,8 @@ export const signIn = (token) => {
 }
 
 export const signOut = () => {
-  localStorage.removeItem('authorization');
+  localStorage.clear();
+  window.location.reload();
 }
 
 export const isAuthenticated = () => {
