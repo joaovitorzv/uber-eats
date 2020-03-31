@@ -10,14 +10,6 @@ export default function Item(props) {
     modal.style.display = action
   }
 
-  // Close modal when click anywhere outside the box
-  window.onclick = (e) => {
-    let modal = document.getElementById("modal");
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  }
-
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [price, setPrice] = useState(props.price);
