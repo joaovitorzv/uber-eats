@@ -57,7 +57,7 @@ export const Modal = styled.div`
   display: none; 
   position: fixed; 
   z-index: 5;
-  padding-top: 100px;
+  padding-top: 50px;
   left: 0;
   top: 0;
   width: 100%; 
@@ -70,6 +70,10 @@ export const Modal = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    h3 {
+      font-weight: 400;
+    }
   }
 
   .modal-content {
@@ -89,5 +93,69 @@ export const Modal = styled.div`
       color: #000;
       cursor: pointer;
     }
+  }
+`;
+
+export const ModalContent = styled.div`
+  display: flex;
+
+  img {
+    width: 40%;
+
+    &:hover {
+      opacity: .8;
+      cursor: pointer;
+      transition-duration: 300ms;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 0 2%;
+
+    label {
+      color: #757575;
+      
+      &:not(:first-child){
+      margin-top: 10px;
+      }
+    }
+
+    input {
+      font-size: 1em;
+      height: 40px;
+      padding: 0 10px;
+      border: none;
+      border-bottom: 2px solid transparent;
+      background-color: #f2eded;
+      
+      &:hover, &:focus {
+        border-bottom: 2px solid black;
+        transition-duration: 350ms;
+      }
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+  }
+`;
+
+
+export const Button = styled.button`
+  width: 48%;
+  border: none;
+  padding: 10px 0;
+  color: black;
+  border: 2px solid transparent;
+
+  &:hover {
+    color: white;
+    background-color: ${props => props.warning ? "#db1a3a" : "#06C167"};
   }
 `;
