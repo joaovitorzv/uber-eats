@@ -20,7 +20,7 @@ export const Order = styled.div`
   .customer-info {
     padding: 10px;
     margin-top: 10px;
-    background-color: #06C167;
+    background-color: #292828;
     color: white;
 
     p {

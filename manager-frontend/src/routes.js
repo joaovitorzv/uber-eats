@@ -19,7 +19,7 @@ export default function Routes() {
 
         <PrivateRoute path="/dashboard" exact component={Dashboard} />
         <PrivateRoute path="/dashboard/menu" component={Menu} />
-        <PrivateRoute path="/dashboard/orders-production" component={Orders} />
+        <PrivateRoute path="/dashboard/orders" component={Orders} />
       </Switch>
     </BrowserRouter>
   )
