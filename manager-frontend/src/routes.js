@@ -8,6 +8,7 @@ import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Menu from './pages/Menu';
+import Orders from './pages/Orders';
 
 export default function Routes() {
   return (  
@@ -18,6 +19,7 @@ export default function Routes() {
 
         <PrivateRoute path="/dashboard" exact component={Dashboard} />
         <PrivateRoute path="/dashboard/menu" component={Menu} />
+        <PrivateRoute path="/dashboard/orders-production" component={Orders} />
       </Switch>
     </BrowserRouter>
   )

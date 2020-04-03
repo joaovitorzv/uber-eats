@@ -11,9 +11,9 @@ export default function Navigation() {
       </UserLogged>
 
       <ul>
-        <ButtonLink to="/dashboard/menu"><li>Menu</li></ButtonLink>
-        <ButtonLink to="/orders"><li>Orders</li></ButtonLink>
         <ButtonLink to="/dashboard"><li>Analitycs</li></ButtonLink>
+        <ButtonLink to="/dashboard/orders-production"><li>Orders</li></ButtonLink>
+        <ButtonLink to="/dashboard/menu"><li>Menu</li></ButtonLink>
         <ButtonLink to="/dashboard"><li>Payments</li></ButtonLink>
       </ul>
     </NavigationContainer>
