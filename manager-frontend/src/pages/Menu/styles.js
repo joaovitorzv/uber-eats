@@ -31,7 +31,6 @@ export const MenuContainer = styled.div`
         }
       }
 
-
       h3 {
         font-weight: 400;
         font-size: 15px;
@@ -39,20 +38,24 @@ export const MenuContainer = styled.div`
       }
 
       .file-input {
-        padding: 12px;
+        font-weight: bold;
+        font-size: 13px;
+        padding: 15px;
         cursor: pointer;
-        border: 2px solid #e6e9ed;
+        color: #7d7d7d;
+        background-color: #f2eded;
+        border: 1px solid transparent;
         margin: 0 10px;
 
         &:hover {
-          color: #06C167;
-          border: 2px solid #06C167;
+          color: white;
+          background-color: #06C167;
         }
       }
 
       input[type="file"] {
         z-index: -1;
-        position: absolute;
+        display: none;
         opacity: 0;
       }
 
@@ -67,4 +70,10 @@ export const MenuContainer = styled.div`
     grid-template-rows: auto;
     grid-gap: 20px;
   }
+`;
+
+export const AlignBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 `;

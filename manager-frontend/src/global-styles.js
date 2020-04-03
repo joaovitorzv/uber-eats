@@ -66,3 +66,16 @@ export const WhiteButton = styled.button`
     border: 2px solid #06C167;
   }
 `;
+
+export const SubmitBtn = styled.button`
+  border: none;
+  padding: 10px 20px;
+  width: 35%;
+  background-color: #faf7f7;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    transition-duration: 200ms;
+  }
+`;

@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { MenuContainer } from './styles';
+import { MenuContainer, AlignBtn } from './styles';
+import { SubmitBtn } from '../../global-styles';
 
 import Header from '../../components/Header';
 import Navigation from '../../components/Navigation';
 import Item from '../../components/Item';
+
+import imgPreview from '../../assets/cocacola.jpg';
 
 export default function Dashaboard() {
 
@@ -56,10 +59,13 @@ export default function Dashaboard() {
                 Upload your banner
                 <input id="file-upload" type="file"/>
               </label>
-
-
             </div>
+            <AlignBtn>
+              <SubmitBtn>Submit</SubmitBtn>
+            </AlignBtn>
+          </form>
 
+          <form>
             <div className="input-group">
               <h3>Add new item</h3>
               <input 
@@ -76,9 +82,12 @@ export default function Dashaboard() {
                 <input id="file-upload" type="file"/>
               </label>
             </div>
-          </form>
-        </div>
+            <AlignBtn>
+              <SubmitBtn>Add</SubmitBtn>
+            </AlignBtn>
+        </form>
       </div>
+    </div>
 
       <div className="menu-items">
         <Item  id="1" title="Combo Mega stacker - 2.0" description="Free refil, Batata Media, Mega Stacker Duplo" price="27"/>
