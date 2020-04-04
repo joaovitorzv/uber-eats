@@ -1,5 +1,3 @@
 node_modules/
 
-/tmp/.jpg
-/tmp/.jpeg
-/tmp/.png
+/tmp/uploads/*
