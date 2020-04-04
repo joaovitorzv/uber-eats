@@ -14,19 +14,23 @@ module.exports = {
       return res.status(400).json({ error: 'Form validation error' });
     }
 
+
+    const logo = req.files['logo'][0];
+    const banner = req.files['banner'][0];
+
+    console.log(logo.filename, banner.filename);
+
     const {
       description,
-      delivery_price,
-      logo_path,
-      banner_path
+      delivery_price
     } = req.body;
 
     const menu = await Menu.create({
       restaurant_id,
       description,
       delivery_price,
-      logo_path,
-      banner_path
+      logo_path: logo.filename,
+      banner_path: banner.filename
     });
 
     return res.json(menu);
