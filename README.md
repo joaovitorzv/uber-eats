@@ -1,4 +1,4 @@
 # UberEats
-Simple UberEats version
+Simplified uber eats version
 
 ## In development 🚀
