@@ -12,7 +12,6 @@ class sessionController {
         .email()
         .required(),
       password: Yup.string()
-        .min(6)
         .required()
     });
 

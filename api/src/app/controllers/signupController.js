@@ -4,12 +4,12 @@ const Yup = require('yup');
 class signupController {
   async store(req, res) {
     const schema = Yup.object().shape({
+      name: Yup.string().required(),
       email: Yup.string().required().email(),
       password: Yup.string().min(6).required(),
       restaurant_name: Yup.string().required(),
       restaurant_address: Yup.string().required(),
-      culinary: Yup.string().required(),
-      delivery_price: Yup.string().required(),
+      culinary: Yup.string().required()
     });
 
     if(!(await schema.isValid(req.body))) {
@@ -18,25 +18,25 @@ class signupController {
 
     const email = req.body.email;
 
+    if (await Restaurant.findOne({ where: { email }})) {
+      return res.status(400).json({ error: 'This email is already registered'})
+    }
+
     const { 
+      name,
       password, 
       restaurant_name, 
       restaurant_address, 
-      culinary, 
-      delivery_price,
-      logo,
-      banner, 
+      culinary
     } = req.body;
 
     const restaurant = await Restaurant.create({
+      name,
       email,
       password,
       restaurant_name,
       restaurant_address,
       culinary,
-      delivery_price,
-      logo,
-      banner
     });
 
     return res.json(restaurant);

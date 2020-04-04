@@ -2,44 +2,34 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('restaurants', {
+    return queryInterface.createTable('menus', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-
-      name: {
+      restaurant_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'restaurants', key: 'id' },
+        allowNull: false,
+      },
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-
-      email: {
+      delivery_price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      logo_path: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-
-      password_hash: {
+      banner_path: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-
-      restaurant_name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-
-      restaurant_address: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-
-      culinary: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-    
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -52,7 +42,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('restaurants');
+    queryInterface.dropTable('menus')
   }
 };
-

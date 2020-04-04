@@ -2,8 +2,9 @@ const Sequelize = require("sequelize");
 const dbConfig = require("../config/database");
 
 const Restaurant = require('../app/models/Restaurant');
+const Menu = require('../app/models/Menu');
 
-const models = [Restaurant];
+const models = [Restaurant, Menu];
 
 class Database {
   constructor() {
