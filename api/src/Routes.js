@@ -24,5 +24,9 @@ routes.post('/create-menu', upload.fields([
   { name: 'banner', maxCount: 1 }
   ]), menuController.store);
 
+routes.put('/update-menu', upload.fields([
+  { name: 'logo', maxCount: 1 }, 
+  { name: 'banner', maxCount: 1 }
+  ]), menuController.update);
   
 module.exports = routes;
