@@ -11,14 +11,27 @@ const authMiddleware = require("./app/middlewares/auth");
 const multerConfig = require('./config/multer');
 const upload = multer(multerConfig)
 
-routes.get('/', (req, res) => {
-  return res.json({ working: true });
-})
+/*
+* Public session routes
+*/
 
+// Manager
 routes.post('/signup', signupController.store);
 routes.post('/sessions', sessionController.store);
 
+/*
+* Public Routes
+*/
+
+
+/*
+* Below this auth middleware 
+* all routes are private  and requires jwt token  
+*/
+
 routes.use(authMiddleware);
+
+// Manager routes
 
 routes.post('/create-menu', upload.fields([
   { name: 'logo', maxCount: 1 }, 
@@ -31,5 +44,6 @@ routes.put('/update-menu', upload.fields([
 ]), menuController.update);
 
 routes.post('/create-item', upload.single('thumbnail'), itemController.store);
+routes.put('/update-item', upload.single('thumbnail'), itemController.update);
 
 module.exports = routes;

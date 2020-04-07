@@ -6,7 +6,9 @@ const Yup = require('yup');
 module.exports = {
   async store(req, res) {
     const restaurant_id = req.userId;
-    const menu_id = 11;
+    const menu = await Menu.findOne({
+      where: { restaurant_id }
+    });
 
     const schema = Yup.object().shape({
       title: Yup.string().required(),
@@ -25,9 +27,8 @@ module.exports = {
       price
     } = req.body;
 
-    console.log({ title, description, price, thumbnail_path: thumbnail.filename, menu_id });
     const item = await Item.create({
-      menu_id,
+      menu_id: menu.id,
       title,
       description,
       price,
@@ -35,5 +36,7 @@ module.exports = {
     });
     
     return res.status(200).json(item);
-  }
+  },
+
+
 }
