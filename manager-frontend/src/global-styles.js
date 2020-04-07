@@ -28,14 +28,20 @@ a {
 
 export const Input = styled.input`
   width: 100%;
-  border: 1px solid #c7c7c7;
+  border: none;
+  background-color:  #f2eded;
   @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
   font-family: 'Lato', sans-serif;
   font-weight: 500;
   padding: 3% 4%;
+  border-bottom: 2px solid transparent;
 
   &:focus {
-    border: 1px solid rgb(67, 164, 34);
+    border-bottom: 2px solid rgb(67, 164, 34);
+  }
+
+  &:not(:first-child){
+    margin-top: 3px;
   }
 `;
 
@@ -47,6 +53,7 @@ export const Button = styled.button`
   border: none;
   padding: 3% 0;
   font-weight: 400;
+  margin-top: 5px;
 
   &:hover {
     transition-duration: 400ms;

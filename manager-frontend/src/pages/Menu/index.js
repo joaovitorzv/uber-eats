@@ -23,42 +23,58 @@ export default function Dashaboard() {
         <div className="form-container">
           <form>
             <div className="input-group">
-              <h3>Address</h3>
+              <h3>Basic informations</h3>
+
+              <label htmlFor="city">Name</label>
+              <input 
+                name="name"
+                type="text"
+                value="Dona chica restaurant"  
+              />
+
+              <label htmlFor="address">Street</label>
               <input 
                 type="text"
+                name="address"
                 value="Rua honorio de Lima, 2290"  
                 placeholder="Address"
               />
-              <input 
+
+              <label htmlFor="city">City</label>
+              <input
+                name="city" 
                 type="text"
                 value="Franca/SP"  
-              />
-              <input 
-                type="text"
-                value="Dona chica restaurant"  
               />
             </div>
 
             <div className="input-group">
               <h3>Appearance</h3>
+              <label htmlFor="description">Description</label>
               <input 
-                type="text"
-                value="Dona chica restaurant"  
-              />
-              <input 
+                name="description"
                 type="text"
                 value="Come here to experience the best what dona chica's have to give you"  
               />
 
-              <label className="file-input" id="display-name">
-                Upload your logo
-                <input id="file-upload" type="file"/>
-              </label>
+              <label htmlFor="price">Delivery price</label>
+              <input 
+                name="price"
+                type="number"
+                value="7"  
+              />
 
-              <label className="file-input" id="display-name">
-                Upload your banner
-                <input id="file-upload" type="file"/>
-              </label>
+              <div className="file-input-group">
+                <label className="file-input" id="display-name">
+                  Upload your logo
+                  <input id="file-upload" type="file"/>
+                </label>
+
+                <label className="file-input" id="display-name">
+                  Upload your banner
+                  <input id="file-upload" type="file"/>
+                </label>
+              </div>
             </div>
             <AlignBtn>
               <SubmitBtn>Submit</SubmitBtn>
@@ -68,15 +84,28 @@ export default function Dashaboard() {
           <form>
             <div className="input-group">
               <h3>Add new item</h3>
+
+              <label htmlFor="item-name">Item name</label>
               <input 
+                name="item-name"
                 type="text"
                 placeholder="Item name"
               />
+
+              <label htmlFor="item-description">Item description</label>
               <input 
+                name="item-description"
                 type="text"
                 placeholder="Description"
               />
 
+              <label htmlFor="item-price">Item price</label>
+              <input 
+                name="item-price"
+                type="text"
+                placeholder="Description"
+              />
+              
               <label className="file-input" id="display-name">
                 Upload a beatiful picture
                 <input id="file-upload" type="file"/>

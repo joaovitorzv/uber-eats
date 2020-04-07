@@ -12,7 +12,7 @@ export const OrdersContainer = styled.div`
   flex-direction: row;
   justify-content: center;
 
-  background-color: #e7ebe6;
+  background-color: white;
   .order-container {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr;

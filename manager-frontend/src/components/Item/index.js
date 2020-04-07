@@ -8,11 +8,18 @@ export default function Item(props) {
   function modalAction(action) {
     let modal = document.getElementById(props.id);
     modal.style.display = action
+
+    // pass item id
+    if (action === 'block') {
+      setId(props.id);
+      console.log(id);
+    }
   }
 
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [price, setPrice] = useState(props.price);
+  const [id, setId] = useState(props.id);
 
   return (
     <>

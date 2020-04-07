@@ -7,6 +7,7 @@ export const Container = styled.div`
 
   .home-container {
     background-image: url("https://www.ubereats.com/restaurant/_static/cd6de13bd5f5f13312b5f9571522aef4.jpg");
+    min-height: 550px;
     color: white;
     padding: 0 10%;
     display: flex;

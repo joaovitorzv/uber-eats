@@ -32,11 +32,6 @@ export default function CreateAccount() {
               <InputBox>
                 <Input type="text" placeholder="Type of cuisine"></Input> 
               </InputBox>
-              
-              <InputBox>
-                <label>Import your restaurant logo</label>
-                <Input type="file" placeholder="Logo" />
-              </InputBox>
 
               <Button type="submit">Submit</Button>
             </FormContainer>

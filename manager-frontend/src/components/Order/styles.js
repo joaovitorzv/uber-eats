@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Order = styled.div`
   margin: 10px;
   max-width: 270px;
-  background-color: white;
+  background-color: #fafafa;
   border: 1px solid #e6e6e6;
   
   .order-info {

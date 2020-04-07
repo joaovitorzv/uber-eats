@@ -5,36 +5,61 @@ export const MenuContainer = styled.div`
   margin: 2% auto;
   
   .settings-container {
+
+    h2 {
+      color: rgb(67, 164, 34);
+    }
   }
 
   .form-container {
     background-color: white;
-    margin-top: 10px;
     padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: 20px;
     
     .input-group {
       justify-content: center;
+      display: flex;
+      flex-direction: column;
 
       &:not(:first-child) {
-        margin-top: 15px;
+          margin-top: 15px;
+      }
+
+      label {
+        color: #8f8f8f;
+        &:not(first-child) {
+          margin-top: 10px;
+        }
       }
 
       input {
-        width: 30%;
-        border: none;
-        background-color: #f2eded;
+        width: 600px;
+        border: 2px solid transparent;
+        background-color: #faf5f5;
         padding: 15px 20px;
         font-size: .9em;
 
-        &:not(first-child) {
-          margin-left: 10px;
+        &:focus {
+          border-bottom: 2px solid black;
         }
       }
 
       h3 {
-        font-weight: 400;
-        font-size: 15px;
-        margin-left: 10px;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      
+      .file-input-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .file-input {
+          width: 48%;
+        }
       }
 
       .file-input {
@@ -45,7 +70,6 @@ export const MenuContainer = styled.div`
         color: #7d7d7d;
         background-color: #f2eded;
         border: 1px solid transparent;
-        margin: 0 10px;
 
         &:hover {
           color: white;
@@ -73,7 +97,7 @@ export const MenuContainer = styled.div`
 `;
 
 export const AlignBtn = styled.div`
-  display: flex;
   justify-content: center;
+  display: flex;
   margin-top: 10px;
 `;
