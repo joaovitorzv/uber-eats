@@ -44,6 +44,8 @@ routes.put('/update-menu', upload.fields([
 ]), menuController.update);
 
 routes.post('/create-item', upload.single('thumbnail'), itemController.store);
-routes.put('/update-item', upload.single('thumbnail'), itemController.update);
+routes.put('/update-item/:id', upload.single('thumbnail'), itemController.update);
+routes.delete('/delete-item/:id', itemController.delete);
+routes.get('/items', itemController.index);
 
 module.exports = routes;
