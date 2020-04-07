@@ -11,7 +11,7 @@ class Menus extends Model {
       sequelize
     });
     return this;
-  }
+  };
 
   static associate(models) {
     this.belongsTo(models.Restaurant, {
@@ -19,6 +19,6 @@ class Menus extends Model {
       as: 'restaurant',
     });
   };
-}
+};
 
 module.exports = Menus;

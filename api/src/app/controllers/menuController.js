@@ -20,7 +20,7 @@ module.exports = {
     const { description, delivery_price } = req.body;
 
     const menu = await Menu.create({
-      restaurant_id,
+      restaurant_id,  
       description,
       delivery_price,
       logo_path: logo.filename,
@@ -47,17 +47,30 @@ module.exports = {
     });
 
     const { description, delivery_price } = req.body;
+    console.log(delivery_price);
 
-      logo = req.files['logo'][0];
-      banner = req.files['banner'][0];
-      
-    console.log(logo);
+    const logo = req.files['logo'];
+    const banner = req.files['banner'];
 
     const update = await menu.update({ 
       description,
-      delivery_price
+      delivery_price,
+      logo,
+      banner
     });
 
     return res.json(update);
+  },
+
+  async index(req, res) {
+    const restaurant_id = req.userId;
+
+    const menu = await Menu.findOne({
+      where: { restaurant_id }
+    });
+
+    console.log(menu);
+
+    return res.json(menu);
   }
 }

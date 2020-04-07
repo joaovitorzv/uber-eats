@@ -4,6 +4,7 @@ const multer = require('multer');
 const signupController = require("./app/controllers/signupController"); 
 const sessionController = require('./app/controllers/sessionController');
 const menuController = require('./app/controllers/menuController');
+const itemController = require('./app/controllers/itemController');
 
 const authMiddleware = require("./app/middlewares/auth");
 
@@ -22,11 +23,13 @@ routes.use(authMiddleware);
 routes.post('/create-menu', upload.fields([
   { name: 'logo', maxCount: 1 }, 
   { name: 'banner', maxCount: 1 }
-  ]), menuController.store);
+]), menuController.store);
 
 routes.put('/update-menu', upload.fields([
   { name: 'logo', maxCount: 1 }, 
   { name: 'banner', maxCount: 1 }
-  ]), menuController.update);
-  
+]), menuController.update);
+
+routes.post('/create-item', upload.single('thumbnail'), itemController.store);
+
 module.exports = routes;

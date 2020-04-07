@@ -3,8 +3,9 @@ const dbConfig = require("../config/database");
 
 const Restaurant = require('../app/models/Restaurant');
 const Menu = require('../app/models/Menu');
+const Item = require('../app/models/Item');
 
-const models = [Restaurant, Menu];
+const models = [Restaurant, Menu, Item];
 
 class Database {
   constructor() {
