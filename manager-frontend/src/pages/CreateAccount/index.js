@@ -1,8 +1,21 @@
 import React from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import Header from '../../components/Header';
 import { Container, FormContainer, ItemContainer, InputBox } from './styles';
 import { Button, Input } from '../../global-styles';
+
+import api from '../../services/api';
+
+const validationSchema = Yup.object().shape({
+  restaurantName: Yup.string().required("Restaurant name is required"),
+  restaurantAddress: Yup.string().required("Restaurant address is required"),
+  fullName: Yup.string().required('Name is required'),
+  email: Yup.string().email('Put a valid email').required('Email is required'),
+  password: Yup.string().required('Password is required'),
+  cuisine: Yup.string().required('Cuisine is required')
+});
 
 export default function CreateAccount() {
   return (
@@ -18,22 +31,86 @@ export default function CreateAccount() {
 
             <FormContainer className="item-container  form-container">
               <h2>Partner with us</h2>
-              <InputBox>
-                <Input type="text" placeholder="Restaurant Name"></Input>
-                <Input type="text" placeholder="Restaurant Address"></Input>
-              </InputBox>
 
-              <InputBox>
-                <Input type="text" placeholder="Full Name"></Input>
-                <Input type="email" placeholder="Email"></Input>
-                <Input type="password" placeholder="Password"></Input>
-              </InputBox>
+              <Formik
+                initialValues={{ 
+                  restaurantAddress: "", 
+                  restaurantName: "",
+                  fullName: "",
+                  email: "",
+                  password: "",
+                  cuisine: ""
+                }}
+                validationSchema={validationSchema}
+                onSubmit={ async (values) => {
+                  const response = await api.post('/signup', values);
+                  return response;
+                }}
+              >
+                {({ handleSubmit, handleChange, values, errors, isSubmitting }) => (
+                <form onSubmit={handleSubmit}>
+                  <InputBox>
+                    <Input 
+                      type="text" 
+                      placeholder="Restaurant Name"
+                      name="restaurantName"
+                      onChange={handleChange}
+                      values={values.restaurantName}
+                    />
+                    {errors.restaurantName}
+                    <Input 
+                      type="text" 
+                      name="restaurantAddress"
+                      placeholder="Restaurant Address" 
+                      onChange={handleChange}
+                      values={values.restaurantAddress}
+                    />
+                    {errors.restaurantAddress}
+                  </InputBox>
 
-              <InputBox>
-                <Input type="text" placeholder="Type of cuisine"></Input> 
-              </InputBox>
+                  <InputBox>
+                    <Input 
+                      type="text" 
+                      name="fullName"
+                      placeholder="Full Name"
+                      onChange={handleChange}
+                      values={values.fullName}
+                    />
+                    {errors.fullName}
+                    <Input 
+                      type="email" 
+                      name="email"
+                      placeholder="Email"
+                      onChange={handleChange}
+                      values={values.email}
+                    />
+                    {errors.email}
+                    <Input 
+                      type="password"
+                      name="password" 
+                      placeholder="Password"
+                      onChange={handleChange}
+                      values={values.password}
+                    />
+                    {errors.password}
+                  </InputBox>
 
-              <Button type="submit">Submit</Button>
+                  <InputBox>
+                    <Input 
+                      type="text" 
+                      name="cuisine"
+                      placeholder="Type of cuisine"
+                      onChange={handleChange}
+                      values={values.cuisine}
+                    /> 
+                    {errors.cuisine}
+                  </InputBox>
+
+                  <Button type="submit">Submit</Button>
+                </form>
+                )}
+              </Formik>
+
             </FormContainer>
         </div>
       </Container>

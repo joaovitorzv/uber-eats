@@ -77,7 +77,7 @@ export const WhiteButton = styled.button`
 export const SubmitBtn = styled.button`
   border: none;
   padding: 10px 20px;
-  width: 35%;
+  width: ${props => props.size};
   background-color: #faf7f7;
 
   &:hover {

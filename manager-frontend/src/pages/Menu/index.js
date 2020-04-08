@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { MenuContainer, AlignBtn } from './styles';
 import { SubmitBtn } from '../../global-styles';
@@ -9,7 +9,18 @@ import Item from '../../components/Item';
 
 import imgPreview from '../../assets/cocacola.jpg';
 
-export default function Dashaboard() {
+export default function Dashboard() {
+
+  const [name, setName] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [description, setDescription] = useState('');
+  const [deliveryPrice, setDeliveryPrice] = useState('');
+
+  function handleSubmit() {
+
+  }
+
 
   return (
     <>
@@ -21,30 +32,35 @@ export default function Dashaboard() {
         <h2>Update your restaurant Informations</h2>
 
         <div className="form-container">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="input-group">
               <h3>Basic informations</h3>
 
-              <label htmlFor="city">Name</label>
+              <label htmlFor="city">Restaurant name</label>
               <input 
                 name="name"
                 type="text"
-                value="Dona chica restaurant"  
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="ex: Mac Donalts"
               />
 
               <label htmlFor="address">Street</label>
               <input 
                 type="text"
                 name="address"
-                value="Rua honorio de Lima, 2290"  
-                placeholder="Address"
+                value={street}
+                onChange={e => setStreet(e.target.value)}
+                placeholder="ex: 4th Avenue"
               />
 
               <label htmlFor="city">City</label>
               <input
                 name="city" 
                 type="text"
-                value="Franca/SP"  
+                value={city}  
+                onChange={e => setCity(e.target.value)}
+                placeholder="ex: New York"
               />
             </div>
 
@@ -54,14 +70,18 @@ export default function Dashaboard() {
               <input 
                 name="description"
                 type="text"
-                value="Come here to experience the best what dona chica's have to give you"  
+                value={description} 
+                onChange={e => setDescription(e.target.value)}
+                placeholder="ex: The best restaurant of the city" 
               />
 
               <label htmlFor="price">Delivery price</label>
               <input 
                 name="price"
                 type="number"
-                value="7"  
+                value={deliveryPrice}
+                onChange={e => setDeliveryPrice(e.target.value)}  
+                placeholder="ex: 4"
               />
 
               <div className="file-input-group">
@@ -77,7 +97,7 @@ export default function Dashaboard() {
               </div>
             </div>
             <AlignBtn>
-              <SubmitBtn>Submit</SubmitBtn>
+              <SubmitBtn size={'100%'} type="submit">Submit</SubmitBtn>
             </AlignBtn>
           </form>
 
@@ -89,21 +109,21 @@ export default function Dashaboard() {
               <input 
                 name="item-name"
                 type="text"
-                placeholder="Item name"
+                placeholder="ex: Peperoni Pizza 30CM"
               />
 
               <label htmlFor="item-description">Item description</label>
               <input 
                 name="item-description"
                 type="text"
-                placeholder="Description"
+                placeholder="ex: 6 Slices of pizza, with Peperoni, cheese, tomato and the best flavor"
               />
 
               <label htmlFor="item-price">Item price</label>
               <input 
                 name="item-price"
                 type="text"
-                placeholder="Description"
+                placeholder="ex: 7.98"
               />
               
               <label className="file-input" id="display-name">
@@ -112,7 +132,7 @@ export default function Dashaboard() {
               </label>
             </div>
             <AlignBtn>
-              <SubmitBtn>Add</SubmitBtn>
+              <SubmitBtn size={'100%'}>Add</SubmitBtn>
             </AlignBtn>
         </form>
       </div>
