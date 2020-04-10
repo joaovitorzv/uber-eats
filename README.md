@@ -4,7 +4,7 @@
 </h4>
 <p align="center">
   <a href="https://github.com/joaovitorzv">
-    <img alt="Made by Joao vitor" src="https://img.shields.io/github/license/joaovitorzv/UberEats?style=flat-square">
+    <img alt="Made by Joao vitor" src="https://img.shields.io/badge/made%20by-joao-red">
   </a>
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-red">
+  <img alt="License" src="https://img.shields.io/github/license/joaovitorzv/UberEats?style=flat-square">
 </p>
