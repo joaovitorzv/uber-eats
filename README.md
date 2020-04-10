@@ -31,7 +31,7 @@ A ideia principal é criar uma aplicação baseada nas principais funcionalidade
 
 ### 💡 Principais Funcionalidades 
 <hr> 
-*algumas funcionalidades ainda estão em desenvolvimento*
+_algumas funcionalidades ainda estão em desenvolvimento_
 
 - <b>Versão Web (Apenas para restaurantes)</b>
 	- Cadastro de restaurantes
