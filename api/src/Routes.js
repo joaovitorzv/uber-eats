@@ -2,9 +2,10 @@ const routes = require("express").Router();
 const multer = require('multer');
 
 const signupController = require("./app/controllers/signupController"); 
-const sessionController = require('./app/controllers/sessionController');
-const menuController = require('./app/controllers/menuController');
-const itemController = require('./app/controllers/itemController');
+const sessionController = require("./app/controllers/sessionController");
+const restaurantController = require("./app/controllers/restaurantController");
+const menuController = require("./app/controllers/menuController");
+const itemController = require("./app/controllers/itemController");
 
 const authMiddleware = require("./app/middlewares/auth");
 
@@ -23,7 +24,6 @@ routes.post('/sessions', sessionController.store);
 * Public Routes
 */
 
-
 /*
 * Below this auth middleware 
 * all routes are private  and requires jwt token  
@@ -32,6 +32,7 @@ routes.post('/sessions', sessionController.store);
 routes.use(authMiddleware);
 
 // Manager routes
+routes.get('/restaurant', restaurantController.index);
 
 routes.post('/create-menu', upload.fields([
   { name: 'logo', maxCount: 1 }, 
