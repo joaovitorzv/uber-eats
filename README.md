@@ -4,10 +4,10 @@
  <b>Simplified uber eats version</b>
 </h4>
 <p align="center">
-   <img alt="Made by Joao vitor" src="https://img.shields.io/badge/made%20by-joao-red">
-   <img alt="License" src="https://img.shields.io/github/license/joaovitorzv/UberEats?style=flat-square">
-   <img alt="Stars" src="https://img.shields.io/github/stars/joaovitorzv/ubereats?style=social">
-</p> <br>
+   <a href="https://github.com/joaovitorzv"><img alt="Made by Joao vitor" src="https://img.shields.io/badge/made%20by-joao-red"></a>
+   <a href="https://github.com/joaovitorzv/UberEats/blob/develop/LICENSE"><img alt="License" src="https://img.shields.io/github/license/joaovitorzv/UberEats?style=flat-square"></a>
+   <a href="https://github.com/joaovitorzv/UberEats"><img alt="Stars" src="https://img.shields.io/github/stars/joaovitorzv/ubereats?style=social">
+</p></a> <br>
 
 ### Screenshots  📷
 *Em breve*
@@ -31,7 +31,7 @@ A ideia principal é criar uma aplicação baseada nas principais funcionalidade
 
 ### 💡 Principais Funcionalidades 
 <hr> 
-*Algumas funcionalidades ainda estão em desenvolvimento*
+_algumas funcionalidades ainda estão em desenvolvimento_
 
 - <b>Versão Web (Apenas para restaurantes)</b>
 	- Cadastro de restaurantes
@@ -52,8 +52,6 @@ O objetivo deste projeto, é aprender coisas que serão utilizadas em um ambient
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-<hr>
-
--- *Fique a vontade para dar um fork neste repo e alterar oque quiser* 👍
+*Fique a vontade para dar um fork neste repo e alterar oque quiser* 👍
 
 <p align="center">Feito com ❤️ por <strong>João vitor oliveira 👋</p>
