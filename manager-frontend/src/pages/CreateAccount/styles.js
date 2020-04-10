@@ -45,4 +45,8 @@ export const InputBox = styled.div`
     color: rgb(67, 164, 34);
     font-weight: 400;
   }
+
+  .feedback {
+    color: red;
+  }
 `;

@@ -86,3 +86,10 @@ export const SubmitBtn = styled.button`
     transition-duration: 200ms;
   }
 `;
+
+export const ErrorText = styled.p`
+  border-top: 2px solid red;
+  font-size: 10px;
+  color: red;
+`;
+

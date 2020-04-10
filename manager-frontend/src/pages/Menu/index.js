@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import Navigation from '../../components/Navigation';
 import Item from '../../components/Item';
 
-import imgPreview from '../../assets/cocacola.jpg';
+//import imgPreview from '../../assets/cocacola.jpg';
 
 export default function Dashboard() {
 
