@@ -45,7 +45,7 @@ _algumas funcionalidades ainda estão em desenvolvimento_
 	- Fazer pedidos com resposta do cliente em real time
 
 ### 🎯 Objetivo
-O objetivo deste projeto, é aprender coisas que serão utilizadas em um ambiente real de trabalho. me desafiei a criar este projeto para enxergar o meu nivel de conhecimento e colocar com projeto no meu portfolio.
+O objetivo deste projeto, é aprender coisas que serão utilizadas em um ambiente real de trabalho. me desafiei a criar este projeto para enxergar o meu nivel de conhecimento e colocar como projeto no meu portfolio.
 
 
 
