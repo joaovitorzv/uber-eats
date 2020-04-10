@@ -31,7 +31,7 @@ A ideia principal é criar uma aplicação baseada nas principais funcionalidade
 
 ### 💡 Principais Funcionalidades 
 <hr> 
-_algumas funcionalidades ainda estão em desenvolvimento_
+*Algumas funcionalidades ainda estão em desenvolvimento*
 
 - <b>Versão Web (Apenas para restaurantes)</b>
 	- Cadastro de restaurantes
@@ -51,6 +51,8 @@ O objetivo deste projeto, é aprender coisas que serão utilizadas em um ambient
 ### :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
+<hr>
 
 -- *Fique a vontade para dar um fork neste repo e alterar oque quiser* 👍
 
