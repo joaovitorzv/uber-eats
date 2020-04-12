@@ -42,6 +42,7 @@ _algumas funcionalidades ainda estão em desenvolvimento_
 - <b>Versão Mobile (Apenas para clientes)</b>
 	- Cadastro 
 	- Visualizar todos restaurantes e cardapios
+	- Realizar o pagamento de um pedido
 	- Fazer pedidos com resposta do cliente em real time
 
 ### 🎯 Objetivo
