@@ -78,11 +78,12 @@ export const SubmitBtn = styled.button`
   border: none;
   padding: 10px 20px;
   width: ${props => props.size};
-  background-color: #faf7f7;
+  background-color: black;
+  color: white;
+  
 
   &:hover {
-    background-color: black;
-    color: white;
+    background-color: #06C167;
     transition-duration: 200ms;
   }
 `;

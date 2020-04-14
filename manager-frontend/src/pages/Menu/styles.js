@@ -56,6 +56,7 @@ export const MenuContainer = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-top: 20px;
 
         .file-input {
           width: 48%;
@@ -65,7 +66,7 @@ export const MenuContainer = styled.div`
       .file-input {
         font-weight: bold;
         font-size: 13px;
-        padding: 15px;
+        padding: 17px;
         cursor: pointer;
         color: #7d7d7d;
         background-color: #f2eded;
@@ -100,4 +101,34 @@ export const AlignBtn = styled.div`
   justify-content: center;
   display: flex;
   margin-top: 10px;
+`;
+
+
+export const NewItems = styled.form`
+  background-color: white;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 2% 10%;
+
+  label {
+    margin-top: 10px;
+  }
+
+  input { 
+    border: 2px solid transparent;
+    background-color: #faf5f5;
+    padding: 15px 20px;
+    font-size: .9em;
+
+    &:focus {
+      border-bottom: 2px solid black;
+    }
+  }
+
+  .file-input {
+    input[type="file"] {
+      background-color: transparent;
+    }
+  }
 `;

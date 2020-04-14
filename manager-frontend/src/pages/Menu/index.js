@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { MenuContainer, AlignBtn } from './styles';
+import { MenuContainer, AlignBtn, NewItems } from './styles';
 import { SubmitBtn } from '../../global-styles';
 
 import Header from '../../components/Header';
@@ -9,7 +9,26 @@ import Item from '../../components/Item';
 
 //import imgPreview from '../../assets/cocacola.jpg';
 
+import api from '../../services/api';
+
 export default function Dashboard() {
+  const token = localStorage.getItem('authorization');
+  const [field, setField] = useState({});
+  
+  const fetchData = async () => {  
+    const response = await api.get('/restaurant', {
+      headers: {
+        authorization: token
+      }
+    });
+    setField(response);
+    console.log(response);
+  }
+
+
+  useEffect(() => {
+    fetchData();
+  }, [token]);
 
   const [name, setName] = useState('');
   const [street, setStreet] = useState('');
@@ -20,7 +39,6 @@ export default function Dashboard() {
   function handleSubmit() {
 
   }
-
 
   return (
     <>
@@ -42,7 +60,7 @@ export default function Dashboard() {
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                placeholder="ex: Mac Donalts"
+                placeholder="doido"
               />
 
               <label htmlFor="address">Street</label>
@@ -64,6 +82,12 @@ export default function Dashboard() {
               />
             </div>
 
+            <AlignBtn>
+              <SubmitBtn size={'100%'}>Update</SubmitBtn>
+            </AlignBtn>
+          </form>
+
+          <form>
             <div className="input-group">
               <h3>Appearance</h3>
               <label htmlFor="description">Description</label>
@@ -96,41 +120,7 @@ export default function Dashboard() {
                 </label>
               </div>
             </div>
-            <AlignBtn>
-              <SubmitBtn size={'100%'} type="submit">Submit</SubmitBtn>
-            </AlignBtn>
-          </form>
 
-          <form>
-            <div className="input-group">
-              <h3>Add new item</h3>
-
-              <label htmlFor="item-name">Item name</label>
-              <input 
-                name="item-name"
-                type="text"
-                placeholder="ex: Peperoni Pizza 30CM"
-              />
-
-              <label htmlFor="item-description">Item description</label>
-              <input 
-                name="item-description"
-                type="text"
-                placeholder="ex: 6 Slices of pizza, with Peperoni, cheese, tomato and the best flavor"
-              />
-
-              <label htmlFor="item-price">Item price</label>
-              <input 
-                name="item-price"
-                type="text"
-                placeholder="ex: 7.98"
-              />
-              
-              <label className="file-input" id="display-name">
-                Upload a beatiful picture
-                <input id="file-upload" type="file"/>
-              </label>
-            </div>
             <AlignBtn>
               <SubmitBtn size={'100%'}>Add</SubmitBtn>
             </AlignBtn>
@@ -138,6 +128,40 @@ export default function Dashboard() {
       </div>
     </div>
 
+
+      <NewItems>
+          <h3>Add new item</h3>
+
+          <label htmlFor="item-name">Item name</label>
+          <input 
+            name="item-name"
+            type="text"
+            placeholder="ex: Peperoni Pizza 30CM"
+          />
+
+          <label htmlFor="item-description">Item description</label>
+          <input
+            name="item-description"
+            type="text"
+            placeholder="ex: 6 Slices of pizza, with Peperoni, cheese, tomato and the best flavor"
+          />
+
+          <label htmlFor="item-price">Item price</label>
+          <input 
+            name="item-price"
+            type="text"
+            placeholder="ex: 7.98"
+          />
+                
+          <label className="file-input" id="display-name">
+            Upload a beatiful picture
+          <input id="file-upload" type="file"/>
+          </label>
+
+        <AlignBtn>
+          <SubmitBtn size={'100%'}>Add</SubmitBtn>
+        </AlignBtn>
+      </NewItems>
       <div className="menu-items">
         <Item  id="1" title="Combo Mega stacker - 2.0" description="Free refil, Batata Media, Mega Stacker Duplo" price="27"/>
         <Item  id="2" title="Big Tasty" description="Pinto haha xisde" price="12"/>
