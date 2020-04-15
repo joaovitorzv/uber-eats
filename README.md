@@ -40,7 +40,7 @@ _algumas funcionalidades ainda estão em desenvolvimento_
 	- Aceitar Pedidos em real time
 	- Analytics com pagamentos, taxas etc
 - <b>Versão Mobile (Apenas para clientes)</b>
-	- Cadastro 
+	- Cadastro/Login
 	- Visualizar todos restaurantes e cardapios
 	- Realizar o pagamento de um pedido
 	- Resposta do restaurante em real time
