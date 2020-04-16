@@ -9,6 +9,29 @@ export const MenuContainer = styled.div`
     h2 {
       color: rgb(67, 164, 34);
     }
+  
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .about-manager  {
+      display: flex;
+      background-color: white;
+      padding: 20px;
+      margin: .5% 0 3% 0;
+
+      p {
+        margin-left: 10px;
+        font-weight: bold;
+        color: #5e5e5e;
+      }
+
+      strong {
+        color: rgb(67, 164, 34);
+      }
+    }
   }
 
   .form-container {
@@ -131,4 +154,11 @@ export const NewItems = styled.form`
       background-color: transparent;
     }
   }
+`;
+
+
+export const AlertFill = styled.p`
+  padding: 4px 20px;
+  background-color: ${props => props.filled ? "#06C167" : "red"};
+  color: white;
 `;

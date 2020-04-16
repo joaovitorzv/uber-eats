@@ -1,43 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
-import { MenuContainer, AlignBtn, NewItems } from './styles';
+import { MenuContainer, AlignBtn, NewItems, AlertFill } from './styles';
 import { SubmitBtn } from '../../global-styles';
 
 import Header from '../../components/Header';
 import Navigation from '../../components/Navigation';
 import Item from '../../components/Item';
 
-//import imgPreview from '../../assets/cocacola.jpg';
-
 import api from '../../services/api';
 
+const validationBasicInformations = Yup.object().shape({
+  restaurant_name: Yup.string(),
+  restaurant_address: Yup.string(),
+})
+
+const validationAppearance = Yup.object().shape({
+  description: Yup.string().required(),
+  delivery_price: Yup.number().required(),
+});
+
 export default function Dashboard() {
-  const token = localStorage.getItem('authorization');
-  const [field, setField] = useState({});
+  const [response, setResponse] = useState('');
   
-  const fetchData = async () => {  
-    const response = await api.get('/restaurant', {
-      headers: {
-        authorization: token
-      }
-    });
-    setField(response);
-    console.log(response);
-  }
-
-
   useEffect(() => {
+    async function fetchData() {
+      const token = localStorage.getItem('authorization');
+      const response = await api.get('/restaurant', {
+        headers: {
+          authorization: token
+        }
+      });
+  
+      setResponse(response.data);
+      console.log(response.data);
+    } 
     fetchData();
-  }, [token]);
+  }, [])
 
-  const [name, setName] = useState('');
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [description, setDescription] = useState('');
-  const [deliveryPrice, setDeliveryPrice] = useState('');
-
-  function handleSubmit() {
-
+  async function handleSubmit(values, {
+    setSubmitting,
+    setFieldError
+  }) {
+    try {
+      console.log('values');
+    }catch(err) {
+      console.log('err');
+    }
   }
 
   return (
@@ -45,40 +55,56 @@ export default function Dashboard() {
     <Header />
     <Navigation />
     <MenuContainer>
-
       <div className="settings-container">
-        <h2>Update your restaurant Informations</h2>
+        <h4>About manager</h4>
+        <div className="about-manager">
+        <p><strong>Name: </strong>{response.name}</p>
+        <p><strong>Email: </strong>{response.email}</p>
+        </div>
 
+        <div className="form-header">
+          <h2>Update your restaurant Informations </h2>
+          <AlertFill filled={false}>{false ? "You're all set to start selling" : 'Please fill out all fields to start selling'}</AlertFill>
+        </div>
         <div className="form-container">
-          <form onSubmit={handleSubmit}>
+        <Formik
+          validationSchema={validationBasicInformations}
+          initialValues={{ 
+            street: response.restaurant_address || '',
+            culinary: response.culinary || '',
+
+          }}
+          enableReinitialize
+        > 
+          {({ values}) => (
+          <form >
             <div className="input-group">
               <h3>Basic informations</h3>
 
-              <label htmlFor="city">Restaurant name</label>
+              <label htmlFor="city">City</label>
               <input 
                 name="name"
                 type="text"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder="doido"
+                onChange={e => {}}
+                placeholder="ex: Franca"
               />
 
               <label htmlFor="address">Street</label>
               <input 
                 type="text"
                 name="address"
-                value={street}
-                onChange={e => setStreet(e.target.value)}
-                placeholder="ex: 4th Avenue"
+                value={values.street}
+                onChange={e => {}}
+                placeholder={response.street}
               />
 
-              <label htmlFor="city">City</label>
+              <label htmlFor="culinary">Culinary</label>
               <input
-                name="city" 
-                type="text"
-                value={city}  
-                onChange={e => setCity(e.target.value)}
-                placeholder="ex: New York"
+                name="culinary" 
+                type="text" 
+                value={values.culinary}
+                onChange={e => {}}
+                placeholder="ex: Japanese"
               />
             </div>
 
@@ -86,25 +112,36 @@ export default function Dashboard() {
               <SubmitBtn size={'100%'}>Update</SubmitBtn>
             </AlignBtn>
           </form>
+          )}
+        </Formik>
 
-          <form>
+        <Formik
+          validationSchema={validationAppearance}
+          initialValues={{ 
+            description: 'fdf',
+            delivery_price: '',
+          }}
+          onSubmit={handleSubmit}
+        >
+          {({ handleSubmit, handleChange, values, errors, touched, isSubmitting }) => (
+          <form onSubmit={handleSubmit}>
             <div className="input-group">
               <h3>Appearance</h3>
               <label htmlFor="description">Description</label>
               <input 
                 name="description"
                 type="text"
-                value={description} 
-                onChange={e => setDescription(e.target.value)}
+                value={values.description}
+                onChange={handleChange}
                 placeholder="ex: The best restaurant of the city" 
-              />
+              />  
 
-              <label htmlFor="price">Delivery price</label>
+              <label htmlFor="delivery_price">Delivery price</label>
               <input 
-                name="price"
+                name="deliver_price"
                 type="number"
-                value={deliveryPrice}
-                onChange={e => setDeliveryPrice(e.target.value)}  
+                onChange={handleChange} 
+                value={values.delivery_price}
                 placeholder="ex: 4"
               />
 
@@ -122,9 +159,11 @@ export default function Dashboard() {
             </div>
 
             <AlignBtn>
-              <SubmitBtn size={'100%'}>Add</SubmitBtn>
+              <SubmitBtn size={'100%'} type="submit">Add</SubmitBtn>
             </AlignBtn>
         </form>
+        )}
+      </Formik>
       </div>
     </div>
 

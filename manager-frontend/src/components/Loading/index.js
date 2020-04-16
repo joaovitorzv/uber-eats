@@ -7,7 +7,7 @@ export default function Loading() {
   return (
     <Container>
       <div>
-        <img src={LoadingSvg} />
+        <img src={LoadingSvg} alt="loading animation"/>
         <p>Wait a moment</p>
       </div>
     </Container>

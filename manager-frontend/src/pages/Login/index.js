@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 import Logo from '../../assets/uber-eats-logo.png';
-import Loading from '../../components/Loading';
 
 import { Footer, Container } from './styles';
 import { Button, Input, ErrorText } from '../../global-styles';
@@ -68,7 +67,7 @@ export default function Login({ history }) {
               {errors.email && touched.email && <ErrorText>{errors.email}</ErrorText>}
               <Input 
                 name="password"
-                type="password" 
+                type="password"
                 placeholder="Password"
                 onChange={handleChange}
                 value={values.password}
