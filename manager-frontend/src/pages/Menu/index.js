@@ -17,8 +17,10 @@ const validationBasicInformations = Yup.object().shape({
 })
 
 const validationAppearance = Yup.object().shape({
-  description: Yup.string().required(),
-  delivery_price: Yup.number().required(),
+  description: Yup.string().required('Description is required'),
+  delivery_price: Yup.number().required('Delivery price is required'),
+  logo: Yup.mixed().required('Logo is required'),
+  banner: Yup.mixed().required('Banner is required')
 });
 
 export default function Dashboard() {
@@ -32,9 +34,8 @@ export default function Dashboard() {
           authorization: token
         }
       });
-  
+      
       setResponse(response.data);
-      console.log(response.data);
     } 
     fetchData();
   }, [])
@@ -44,9 +45,11 @@ export default function Dashboard() {
     setFieldError
   }) {
     try {
-      console.log('values');
+      const response = await api.post('/create-menu', values);
+      console.log(response);
+      setSubmitting(false);
     }catch(err) {
-      console.log('err');
+      console.log(err);
     }
   }
 
@@ -72,12 +75,11 @@ export default function Dashboard() {
           initialValues={{ 
             street: response.restaurant_address || '',
             culinary: response.culinary || '',
-
           }}
           enableReinitialize
         > 
-          {({ values}) => (
-          <form >
+          {({ values, handleChange }) => (
+          <form>
             <div className="input-group">
               <h3>Basic informations</h3>
 
@@ -94,7 +96,7 @@ export default function Dashboard() {
                 type="text"
                 name="address"
                 value={values.street}
-                onChange={e => {}}
+                onChange={handleChange}
                 placeholder={response.street}
               />
 
@@ -103,7 +105,7 @@ export default function Dashboard() {
                 name="culinary" 
                 type="text" 
                 value={values.culinary}
-                onChange={e => {}}
+                onChange={handleChange}
                 placeholder="ex: Japanese"
               />
             </div>
@@ -118,13 +120,15 @@ export default function Dashboard() {
         <Formik
           validationSchema={validationAppearance}
           initialValues={{ 
-            description: 'fdf',
+            description: '',
             delivery_price: '',
+            logo: undefined,
+            banner: undefined,
           }}
           onSubmit={handleSubmit}
         >
-          {({ handleSubmit, handleChange, values, errors, touched, isSubmitting }) => (
-          <form onSubmit={handleSubmit}>
+          {({ handleSubmit, handleChange, values, setFieldValue }) => (
+          <form onSubmit={handleSubmit} encType="multipart/form-data">
             <div className="input-group">
               <h3>Appearance</h3>
               <label htmlFor="description">Description</label>
@@ -138,7 +142,7 @@ export default function Dashboard() {
 
               <label htmlFor="delivery_price">Delivery price</label>
               <input 
-                name="deliver_price"
+                name="delivery_price"
                 type="number"
                 onChange={handleChange} 
                 value={values.delivery_price}
@@ -146,14 +150,18 @@ export default function Dashboard() {
               />
 
               <div className="file-input-group">
-                <label className="file-input" id="display-name">
+                <label >
                   Upload your logo
-                  <input id="file-upload" type="file"/>
+                  <input name="logo" type="file" onChange={(event) => {
+                    setFieldValue("logo", event.currentTarget.files[0]);
+                  }} />
                 </label>
 
-                <label className="file-input" id="display-name">
+                <label>
                   Upload your banner
-                  <input id="file-upload" type="file"/>
+                  <input name="banner"  type="file" onChange={(event) => {
+                    setFieldValue("banner", event.currentTarget.files[0]);
+                  }} />
                 </label>
               </div>
             </div>

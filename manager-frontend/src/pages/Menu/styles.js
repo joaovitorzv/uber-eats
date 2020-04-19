@@ -79,32 +79,16 @@ export const MenuContainer = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 20px;
 
-        .file-input {
-          width: 48%;
+        label {
+          display: flex;
+          flex-direction: column;
         }
-      }
-
-      .file-input {
-        font-weight: bold;
-        font-size: 13px;
-        padding: 17px;
-        cursor: pointer;
-        color: #7d7d7d;
-        background-color: #f2eded;
-        border: 1px solid transparent;
-
-        &:hover {
-          color: white;
-          background-color: #06C167;
+        
+        input {
+          max-width: 295px;
+          padding: 10px;
         }
-      }
-
-      input[type="file"] {
-        z-index: -1;
-        display: none;
-        opacity: 0;
       }
 
     }
