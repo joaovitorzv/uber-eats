@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { MenuContainer, AlignBtn, NewItems, AlertFill } from './styles';
-import { SubmitBtn, ErrorText } from '../../global-styles';
+import { MenuContainer, AlertFill } from './styles';
+import { SubmitBtn, ErrorText, AlignBtn } from '../../global-styles';
 
 import Header from '../../components/Header';
 import Navigation from '../../components/Navigation';
 import Item from '../../components/Item';
+import CreateItem from '../../components/CreateItem'
 
 import api from '../../services/api';
 
 const validationBasicInformations = Yup.object().shape({
-  restaurant_name: Yup.string(),
-  restaurant_address: Yup.string(),
+  restaurant_city: Yup.string().required('City is required'),
+  restaurant_name: Yup.string().required('Restaurant name is required'),
+  restaurant_address: Yup.string().required('Address is required'),
+  cuisine: Yup.string().required('Cuisine is required')
 })
 
 const validationAppearance = Yup.object().shape({
@@ -23,15 +26,14 @@ const validationAppearance = Yup.object().shape({
   banner: Yup.mixed().required('Banner is required')
 });
 
-const validationNewItem = Yup.object().shape({
-  item_title: Yup.string().required("Item name is required"),
-  item_description: Yup.string().required("Item description is required"),
-  item_price: Yup.number().required("Item price is required"),
-  item_thumbnail: Yup.mixed().required("Item picture is required")
+const validationUpdateAppeareance = Yup.object().shape({
+  description: Yup.string(),
+  delivery_price: Yup.number(),  
 });
 
 export default function Dashboard() {
-  const [response, setResponse] = useState('');
+  const [restaurant, setRestaurant] = useState('');
+  const [menu, setMenu] = useState('');
   
   useEffect(() => {
     async function fetchData() {
@@ -42,7 +44,9 @@ export default function Dashboard() {
         }
       });
       
-      setResponse(response.data);
+      setMenu(response.data);
+      setRestaurant(response.data.restaurant);
+      console.log(response.data);
     } 
     fetchData();
   }, [])
@@ -55,24 +59,18 @@ export default function Dashboard() {
       formData.append('logo', values.logo);
       formData.append('banner', values.banner);
       
-      await api.post('/create-menu', formData, {
-        headers: {
-          authorization: localStorage.getItem('authorization'),
-          'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+      await api.post(`${restaurant.active ? '/update-menu' : '/create-menu'}`, 
+        formData, {
+          headers: {
+            authorization: localStorage.getItem('authorization'),
+            'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+          }
         }
-      });
+      );
       setSubmitting(false);    
     } catch(err) {
       console.log(err)
       setSubmitting(false);
-    }
-  }
-
-  async function handleItem(values) {
-    try {
-      console.log(values)
-    } catch(err) {
-      console.log(err)
     }
   }
 
@@ -84,52 +82,51 @@ export default function Dashboard() {
       <div className="settings-container">
         <h4>About manager</h4>
         <div className="about-manager">
-        <p><strong>Name: </strong>{response.name}</p>
-        <p><strong>Email: </strong>{response.email}</p>
+        <p><strong>Name: </strong>{restaurant.name}</p>
+        <p><strong>Email: </strong>{restaurant.email}</p>
         </div>
 
         <div className="form-header">
           <h2>Update your restaurant Informations </h2>
-          <AlertFill filled={false}>{false ? "You're all set to start selling" : 'Please fill out all fields to start selling'}</AlertFill>
+          <AlertFill filled={restaurant.active}>{restaurant.active ? "You're all set to start selling" : 'Please fill out all fields to start selling'}</AlertFill>
         </div>
         <div className="form-container">
         <Formik
           validationSchema={validationBasicInformations}
           initialValues={{ 
-            street: response.restaurant_address || '',
-            culinary: response.culinary || '',
+            city: restaurant.restaurant_city || '',
+            street: restaurant.restaurant_address || '',
+            culinary: restaurant.culinary || '',
           }}
           enableReinitialize
         > 
-          {({ values, handleChange }) => (
+          {({ handleSubmit, handleChange, values, setFieldValue, touched, isSubmitting, errors  }) => (
           <form>
             <div className="input-group">
               <h3>Basic informations</h3>
 
               <label htmlFor="city">City</label>
               <input 
-                name="name"
+                name="city"
                 type="text"
-                onChange={e => {}}
-                placeholder="ex: Franca"
+                value={values.city}
+                onChange={handleChange}
               />
 
               <label htmlFor="address">Street</label>
               <input 
+                name="street"
                 type="text"
-                name="address"
                 value={values.street}
                 onChange={handleChange}
-                placeholder={response.street}
               />
 
               <label htmlFor="culinary">Culinary</label>
               <input
                 name="culinary" 
-                type="text" 
+                type="text"
                 value={values.culinary}
                 onChange={handleChange}
-                placeholder="ex: Japanese"
               />
             </div>
 
@@ -141,14 +138,15 @@ export default function Dashboard() {
         </Formik>
 
         <Formik
-          validationSchema={validationAppearance}
+          validationSchema={restaurant.active ? validationUpdateAppeareance : validationAppearance}
           initialValues={{ 
-            description: '',
-            delivery_price: '',
+            description: menu.description || '',
+            delivery_price: menu.delivery_price || '',
             logo: undefined,
             banner: undefined,
           }}
           onSubmit={handleSubmit}
+          enableReinitialize
         >
           {({ handleSubmit, handleChange, values, setFieldValue, touched, isSubmitting, errors }) => (
           <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -161,7 +159,7 @@ export default function Dashboard() {
                 value={values.description}
                 onChange={handleChange}
                 placeholder="ex: The best restaurant of the city" 
-              />  
+              />
               {errors.description && touched.description && <ErrorText>{errors.description}</ErrorText>}
 
               <label htmlFor="delivery_price">Delivery price</label>
@@ -170,7 +168,7 @@ export default function Dashboard() {
                 type="number"
                 onChange={handleChange} 
                 value={values.delivery_price}
-                placeholder="ex: 4"
+                placeholder="ex: 7.89"
               />
               {errors.delivery_price && touched.delivery_price && <ErrorText>{errors.delivery_price}</ErrorText>}
 
@@ -206,63 +204,7 @@ export default function Dashboard() {
       </div>
     </div>
 
-      <Formik
-        initialValues={{
-          item_title: "",
-          item_description: "",
-          item_price: "",
-          item_thumbnail: "",
-        }}
-        validationSchema={validationNewItem}
-        onSubmit={handleItem}
-      >
-      {({ values, isSubmitting, handleChange, handleItem, setFieldValue, touched, error}) => (
-        <NewItems onSubmit={handleItem} encType="multipart/form-data">
-            <h3>Add new item</h3>
-
-            <label htmlFor="title">Item name</label>
-            <input 
-              name="item_title"
-              type="text"
-              placeholder="ex: Peperoni Pizza 30CM"
-              value={values.item_title}
-              onChange={handleChange}
-            />
-            {error.item_title && touched.item_title && <ErrorText>{error.item_title}</ErrorText>}
-
-            <label htmlFor="item_description">Item description</label>
-            <input
-              name="item_description"
-              type="text"
-              placeholder="ex: 6 Slices of pizza, with Peperoni, cheese, tomato and the best flavor"
-              value={values.item_description}
-              onChange={handleChange}
-            />
-            {error.item_description && touched.item_description && <ErrorText>{error.item_description}</ErrorText>}
-
-            <label htmlFor="item_price">Item price</label>
-            <input 
-              name="item_price"
-              type="text"
-              placeholder="ex: 7.98"
-              value={values.item_price}
-              onChange={handleChange}
-            />
-            {error.item_price && touched.item_price && <ErrorText>{error.item_price}</ErrorText>}
-
-            <label className="file-input" id="display-name">
-              Upload a beatiful picture
-            <input name="item_thumbnail" id="file-upload" type="file" onChange={(event) => {
-              setFieldValue("item_thumbnail", event.currentTarget.files[0]);
-            }}/>
-            </label>
-
-          <AlignBtn>
-          <SubmitBtn size={'100%'} disabled={isSubmitting}>{isSubmitting ? "Saving changes" : "Submit"}</SubmitBtn>
-          </AlignBtn>
-        </NewItems>
-      )}
-      </Formik>
+    <CreateItem />
 
       <div className="menu-items">
         <Item  id="1" title="Combo Mega stacker - 2.0" description="Free refil, Batata Media, Mega Stacker Duplo" price="27"/>

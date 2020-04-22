@@ -88,6 +88,12 @@ export const SubmitBtn = styled.button`
   }
 `;
 
+export const AlignBtn = styled.div`
+  justify-content: center;
+  display: flex;
+  margin-top: 10px;
+`;
+
 export const ErrorText = styled.p`
   border-top: 2px solid red;
   font-size: 10px;
