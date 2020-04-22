@@ -6,6 +6,7 @@ const sessionController = require("./app/controllers/sessionController");
 const restaurantController = require("./app/controllers/restaurantController");
 const menuController = require("./app/controllers/menuController");
 const itemController = require("./app/controllers/itemController");
+const dashboardController = require("./app/controllers/dashboardController");
 
 const authMiddleware = require("./app/middlewares/auth");
 
@@ -32,7 +33,10 @@ routes.post('/sessions', sessionController.store);
 routes.use(authMiddleware);
 
 // Manager routes
+routes.get('/dashboard', dashboardController.index);
+
 routes.get('/restaurant', restaurantController.index);
+routes.put('/update-restaurant', restaurantController.store);
 
 routes.post('/create-menu', upload.fields([
   { name: 'logo', maxCount: 1 }, 

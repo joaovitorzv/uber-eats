@@ -2,46 +2,50 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('menus', {
+    return queryInterface.createTable('dashboards', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
+
       restaurant_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'restaurants', key: 'id' },
         allowNull: false,
+        references: { model: 'restaurants', key: 'id' }
       },
-      description: {
-        type: Sequelize.STRING,
+      
+      balance: {
+        type: Sequelize.FLOAT,
         allowNull: false,
+        defaultValue: 0.00
       },
-      delivery_price: {
+
+      total_orders: {
         type: Sequelize.INTEGER,
+        allowNull: false, 
+        defaultValue: 0
+      },
+
+      top_items: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false,
       },
-      logo_path: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      banner_path: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
+
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
+
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: false,
-      }
-    });
+        allowNull: false
+      },
+    })
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('menus')
+    return queryInterface.dropTable('dashboards');
   }
 };

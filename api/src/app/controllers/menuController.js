@@ -1,5 +1,6 @@
 const Yup = require('yup');
 const Menu = require('../models/Menu');
+const Restaurant = require('../models/Restaurant');
 
 module.exports = {
   async store(req, res) {
@@ -26,6 +27,15 @@ module.exports = {
       logo_path: logo.filename,
       banner_path: banner.filename
     });
+
+    const restaurant = await Restaurant.findOne({
+      where: { id: restaurant_id }
+    });
+
+    const update = await restaurant.update({
+      active: true
+    });
+    console.log(update);
 
     return res.json(menu);
   }, 

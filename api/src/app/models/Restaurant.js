@@ -5,12 +5,14 @@ const bcrypt = require("bcryptjs");
 class Restaurant extends Model {
   static init(sequelize) {
     super.init({
+      active: DataTypes.BOOLEAN,
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.VIRTUAL,
       password_hash: DataTypes.STRING,
       restaurant_name: DataTypes.STRING,
       restaurant_address: DataTypes.STRING,
+      restaurant_city: DataTypes.STRING,
       culinary: DataTypes.STRING
     }, {
       sequelize

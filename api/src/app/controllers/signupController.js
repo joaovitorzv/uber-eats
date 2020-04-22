@@ -9,6 +9,7 @@ class signupController {
       password: Yup.string().min(6).required(),
       restaurant_name: Yup.string().required(),
       restaurant_address: Yup.string().required(),
+      restaurant_city: Yup.string().required(),
       culinary: Yup.string().required()
     });
 
@@ -27,19 +28,21 @@ class signupController {
       password, 
       restaurant_name, 
       restaurant_address, 
+      restaurant_city,
       culinary
     } = req.body;
 
-    const restaurant = await Restaurant.create({
+    await Restaurant.create({
       name,
       email,
       password,
       restaurant_name,
       restaurant_address,
+      restaurant_city,
       culinary,
     });
 
-    return res.json(restaurant);
+    return res.status(204);
   }
 }
 

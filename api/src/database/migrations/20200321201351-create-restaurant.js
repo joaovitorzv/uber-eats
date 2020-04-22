@@ -10,6 +10,12 @@ module.exports = {
         allowNull: false,
       },
 
+      active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
+
       name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -31,6 +37,11 @@ module.exports = {
       },
 
       restaurant_address: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+
+      restaurant_city: {
         type: Sequelize.STRING,
         allowNull: false,
       },
