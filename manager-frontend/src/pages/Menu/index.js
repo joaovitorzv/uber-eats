@@ -59,14 +59,26 @@ export default function Dashboard() {
       formData.append('logo', values.logo);
       formData.append('banner', values.banner);
       
-      await api.post(`${restaurant.active ? '/update-menu' : '/create-menu'}`, 
-        formData, {
-          headers: {
-            authorization: localStorage.getItem('authorization'),
-            'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+      if (restaurant.active) {
+        await api.put('/update-menu', 
+          formData, {
+            headers: {
+              authorization: localStorage.getItem('authorization'),
+              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+            }
           }
-        }
-      );
+        );
+      } else {
+        await api.post('/create-menu', 
+          formData, {
+            headers: {
+              authorization: localStorage.getItem('authorization'),
+              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+            }
+          }
+        );
+      }
+      
       setSubmitting(false);    
     } catch(err) {
       console.log(err)
