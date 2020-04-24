@@ -57,16 +57,17 @@ module.exports = {
     });
 
     const { description, delivery_price } = req.body;
-    console.log(delivery_price);
 
-    const logo = req.files['logo'];
-    const banner = req.files['banner'];
+    const logo = req.files['logo'][0];
+    const banner = req.files['banner'][0];
+    console.log(logo, banner);
+
 
     const update = await menu.update({ 
       description,
       delivery_price,
-      logo,
-      banner
+      logo_path: logo.filename,
+      banner_path: banner.filename
     });
 
     return res.json(update);
@@ -78,8 +79,6 @@ module.exports = {
     const menu = await Menu.findOne({
       where: { restaurant_id }
     });
-
-    console.log(menu);
 
     return res.json(menu);
   }
