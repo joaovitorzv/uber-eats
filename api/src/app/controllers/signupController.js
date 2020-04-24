@@ -32,7 +32,7 @@ class signupController {
       culinary
     } = req.body;
 
-    await Restaurant.create({
+    const restaurant = await Restaurant.create({
       name,
       email,
       password,
@@ -42,7 +42,7 @@ class signupController {
       culinary,
     });
 
-    return res.status(204).json();
+    return res.json(restaurant);
   }
 }
 

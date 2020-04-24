@@ -56,19 +56,22 @@ module.exports = {
       where: { restaurant_id }
     });
 
-    const { description, delivery_price } = req.body;
+    const updates = {
+      description: req.body.description,
+      delivery_price: req.body.delivery_price,
+    }
 
-    const logo = req.files['logo'][0];
-    const banner = req.files['banner'][0];
-    console.log(logo, banner);
+    if (req.files['logo']) {
+      const logo = req.files['logo']
+      updates.logo = logo; 
+    }
 
+    if (req.files['banner']) {
+      const banner = req.files['banner']
+      updates.banner = banner;
+    }
 
-    const update = await menu.update({ 
-      description,
-      delivery_price,
-      logo_path: logo.filename,
-      banner_path: banner.filename
-    });
+    const update = await menu.update(updates);
 
     return res.json(update);
   },

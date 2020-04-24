@@ -6,18 +6,26 @@ module.exports = {
   async index(req, res) {
     const restaurant_id = req.userId;
 
-    const restaurant = await Menu.findOne({
-      where: { restaurant_id },
-      include: [
-        { 
-          model: Restaurant, as: 'restaurant',
-          attributes: { exclude: ['password_hash']},
-          required: true, 
-        },
-      ],
+    const restaurant = await Restaurant.findOne({
+      where: { id: restaurant_id }
     });
 
-    return res.json(restaurant);
+    if (restaurant.active) {
+      restaurantInfo = await Menu.findOne({
+        where: { restaurant_id },
+        include: [
+          { 
+            model: Restaurant, as: 'restaurant',
+            attributes: { exclude: ['password_hash']},
+            required: true, 
+          },
+        ],
+      });
+    } else {
+      restaurantInfo = restaurant;
+    }
+
+    return res.json(restaurantInfo);
   },
 
   async store(req, res) {
