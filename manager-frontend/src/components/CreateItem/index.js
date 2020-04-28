@@ -56,7 +56,7 @@ export default function CreateItem() {
         item_thumbnail: "",
       }}
       validationSchema={validationNewItem}
-      onSubmit={handleSubmit}
+      onSubmit={() => console.log('fodase')}
     >
     {({ values, isSubmitting, handleChange, handleSubmit, setFieldValue, touched, errors }) => (
     <NewItems onSubmit={handleSubmit} encType="multipart/form-data">
@@ -108,3 +108,6 @@ export default function CreateItem() {
     </Formik>
   )
 }
+
+
+

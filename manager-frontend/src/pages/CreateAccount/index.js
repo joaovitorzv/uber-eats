@@ -13,6 +13,7 @@ import api from '../../services/api';
 const validationSchema = Yup.object().shape({
   restaurant_name: Yup.string().required("Restaurant name is required"),
   restaurant_address: Yup.string().required("Restaurant address is required"),
+  restaurant_city: Yup.string().required("Restaurant city is required"),
   name: Yup.string().required('Name is required'),
   email: Yup.string().email('Put a valid email').required('Email is required'),
   password: Yup.string().required('Password is required'),
@@ -53,6 +54,7 @@ export default function CreateAccount({ history }) {
               <Formik
                 initialValues={{ 
                   restaurant_address: "", 
+                  restaurant_city: "",
                   restaurant_name: "",
                   name: "",
                   email: "",
@@ -90,6 +92,14 @@ export default function CreateAccount({ history }) {
                       values={values.restaurant_address}
                     />
                     {errors.restaurant_address && touched.restaurant_address && <ErrorText>{errors.restaurant_address}</ErrorText>}
+                    <Input 
+                      type="text" 
+                      name="restaurant_city"
+                      placeholder="Restaurant City" 
+                      onChange={handleChange}
+                      values={values.restaurant_city}
+                    />
+                    {errors.restaurant_city && touched.restaurant_city && <ErrorText>{errors.restaurant_city}</ErrorText>}
                   </InputBox>
 
                   <InputBox>

@@ -84,11 +84,12 @@ export const MenuContainer = styled.div`
           display: flex;
           flex-direction: column;
         }
-        
+
         input {
           max-width: 295px;
           padding: 10px;
         }
+
       }
 
     }
@@ -109,3 +110,13 @@ export const AlertFill = styled.p`
   background-color: ${props => props.filled ? "#06C167" : "red"};
   color: white;
 `;
+
+export const ImgPreview = styled.img`
+  max-width: auto;
+  max-height: 64px;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  border: 1px solid #dbdbdb;
+  margin: 10px 0;
+`; 
