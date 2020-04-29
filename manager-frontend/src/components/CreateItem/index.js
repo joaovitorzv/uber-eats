@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
@@ -17,8 +17,6 @@ const validationNewItem = Yup.object().shape({
 
 
 export default function CreateItem() {
-  const responseError = '';
-
   async function handleSubmit(values, { 
     setSubmitting,
     setFieldError
@@ -29,7 +27,6 @@ export default function CreateItem() {
       formData.append('description', values.item_description);
       formData.append('price', values.item_price);
       formData.append('thumbnail', values.item_thumbnail);
-      console.log(formData);
 
       const response = await api.post('/create-item', formData, {
         headers: {
@@ -37,12 +34,10 @@ export default function CreateItem() {
           'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
         }
       })
-      console.log(response);
       setSubmitting(false);
     } catch (err) {
       console.log(err)
       setFieldError('item_thumbnail', 'Fill out your restaurant settings before create items');
-      responseError = err.data
       setSubmitting(false)
     }
   }
@@ -56,7 +51,7 @@ export default function CreateItem() {
         item_thumbnail: "",
       }}
       validationSchema={validationNewItem}
-      onSubmit={() => console.log('fodase')}
+      onSubmit={handleSubmit}
     >
     {({ values, isSubmitting, handleChange, handleSubmit, setFieldValue, touched, errors }) => (
     <NewItems onSubmit={handleSubmit} encType="multipart/form-data">
