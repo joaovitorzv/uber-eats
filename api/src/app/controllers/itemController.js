@@ -10,12 +10,15 @@ module.exports = {
       where: { restaurant_id }
     });
 
-    const items = await Item.findAll({
-      where: { menu_id: menu.id }
-    });
+    if (menu) { 
+      const items = await Item.findAll({
+        where: { menu_id: menu.id }
+      });
 
-    return res.json(items);
-
+      return res.json(items);
+    }
+    
+    return res.json("To see your items fill out all the forms below");
   },
 
   async store(req, res) {

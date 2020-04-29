@@ -3,6 +3,16 @@ const Menu = require('../models/Menu');
 const Restaurant = require('../models/Restaurant');
 
 module.exports = {
+  async index(req, res) {
+    const restaurant_id = req.userId;
+
+    const menu = await Menu.findOne({
+      where: { restaurant_id }
+    });
+
+    return res.json(menu);
+  },
+  
   async store(req, res) {
     const restaurant_id = req.userId;
 
@@ -62,27 +72,17 @@ module.exports = {
     }
 
     if (req.files['logo']) {
-      const logo = req.files['logo']
-      updates.logo = logo; 
+      const logo = req.files['logo'][0];
+      updates.logo_path = logo.filename;
     }
 
     if (req.files['banner']) {
-      const banner = req.files['banner']
-      updates.banner = banner;
+      const banner = req.files['banner'][0];
+      updates.banner_path = banner.filename;
     }
 
     const update = await menu.update(updates);
 
     return res.json(update);
-  },
-
-  async index(req, res) {
-    const restaurant_id = req.userId;
-
-    const menu = await Menu.findOne({
-      where: { restaurant_id }
-    });
-
-    return res.json(menu);
   }
 }

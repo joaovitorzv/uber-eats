@@ -13,7 +13,9 @@ module.exports = {
       restaurant_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'restaurants', key: 'id' }
+        references: { model: 'restaurants', key: 'id' },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       
       balance: {

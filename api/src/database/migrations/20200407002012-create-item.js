@@ -13,6 +13,8 @@ module.exports = {
         menu_id: {
           type: Sequelize.INTEGER,
           references: { model: 'menus', key: 'id' },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE',
           allowNull: false,
         },
 

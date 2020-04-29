@@ -12,6 +12,8 @@ module.exports = {
       restaurant_id: {
         type: Sequelize.INTEGER,
         references: { model: 'restaurants', key: 'id' },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         allowNull: false,
       },
       description: {
@@ -19,7 +21,7 @@ module.exports = {
         allowNull: false,
       },
       delivery_price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: false,
       },
       logo_path: {

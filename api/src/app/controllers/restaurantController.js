@@ -21,6 +21,7 @@ module.exports = {
           },
         ],
       });
+
     } else {
       restaurantInfo = restaurant;
     }
