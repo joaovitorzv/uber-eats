@@ -3,7 +3,9 @@ const cors = require("cors");
 
 const { resolve } = require("path")
 
-const Routes =  require('./Routes');
+const managerRoutes =  require('./Routes/Manager');
+const customerRoutes = require('./Routes/Customer');
+
 require("./database");
 
 class App {
@@ -24,7 +26,8 @@ class App {
   }
 
   routes() {
-    this.server.use(Routes);
+    this.server.use('/manager', managerRoutes);
+    this.server.use('/customer', customerRoutes);
   }
 }
 

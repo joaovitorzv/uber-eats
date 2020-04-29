@@ -4,6 +4,7 @@ class Dashboard extends Model {
   static init(sequelize) {
     super.init({
       balance: DataTypes.FLOAT,
+      delivery_balance: DataTypes.FLOAT,
       total_orders: DataTypes.INTEGER,
       top_items: DataTypes.ARRAY(DataTypes.STRING),
     }, {

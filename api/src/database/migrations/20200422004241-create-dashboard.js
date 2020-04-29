@@ -24,6 +24,12 @@ module.exports = {
         defaultValue: 0.00
       },
 
+      delivery_balance: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
+        defaultValue: 0.00
+      },
+
       total_orders: {
         type: Sequelize.INTEGER,
         allowNull: false, 
@@ -33,6 +39,7 @@ module.exports = {
       top_items: {
         type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false,
+        defaultValue: []
       },
 
       created_at: {

@@ -1,16 +1,16 @@
 const routes = require("express").Router();
 const multer = require('multer');
 
-const signupController = require("./app/controllers/signupController"); 
-const sessionController = require("./app/controllers/sessionController");
-const restaurantController = require("./app/controllers/restaurantController");
-const menuController = require("./app/controllers/menuController");
-const itemController = require("./app/controllers/itemController");
-const dashboardController = require("./app/controllers/dashboardController");
+const signupController = require("../app/controllers/signupController"); 
+const sessionController = require("../app/controllers/sessionController");
+const restaurantController = require("../app/controllers/restaurantController");
+const menuController = require("../app/controllers/menuController");
+const itemController = require("../app/controllers/itemController");
+const dashboardController = require("../app/controllers/dashboardController");
 
-const authMiddleware = require("./app/middlewares/auth");
+const authMiddleware = require("../app/middlewares/auth");
 
-const multerConfig = require('./config/multer');
+const multerConfig = require('../config/multer');
 const upload = multer(multerConfig)
 
 /*

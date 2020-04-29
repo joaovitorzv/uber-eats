@@ -1,4 +1,5 @@
 const Restaurant = require('../models/Restaurant');
+const Dashboard = require('../models/Dashboard');
 const Yup = require('yup');
 
 class signupController {
@@ -40,6 +41,10 @@ class signupController {
       restaurant_address,
       restaurant_city,
       culinary,
+    });
+
+    await Dashboard.create({
+      restaurant_id: restaurant.id
     });
 
     return res.json(restaurant);
