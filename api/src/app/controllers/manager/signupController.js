@@ -1,5 +1,5 @@
-const Restaurant = require('../models/Restaurant');
-const Dashboard = require('../models/Dashboard');
+const Restaurant = require('../../models/Restaurant');
+const Dashboard = require('../../models/Dashboard');
 const Yup = require('yup');
 
 class signupController {
@@ -18,7 +18,7 @@ class signupController {
       return res.status(400).json({ error: 'Form validation error' });
     }
 
-    const email = req.body.email;
+    const { email } = req.body;
 
     if (await Restaurant.findOne({ where: { email }})) {
       return res.status(400).json({ error: 'This email is already registered'})

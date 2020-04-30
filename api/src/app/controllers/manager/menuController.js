@@ -1,6 +1,6 @@
 const Yup = require('yup');
-const Menu = require('../models/Menu');
-const Restaurant = require('../models/Restaurant');
+const Menu = require('../../models/Menu');
+const Restaurant = require('../../models/Restaurant');
 
 module.exports = {
   async index(req, res) {

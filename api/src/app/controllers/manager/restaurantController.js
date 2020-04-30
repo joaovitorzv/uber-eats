@@ -1,5 +1,5 @@
-const Restaurant = require('../models/Restaurant');
-const Menu = require('../models/Menu');
+const Restaurant = require('../../models/Restaurant');
+const Menu = require('../../models/Menu');
 const Yup = require('yup');
 
 module.exports = {

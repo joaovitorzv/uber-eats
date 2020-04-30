@@ -1,12 +1,12 @@
 const routes = require("express").Router();
 const multer = require('multer');
 
-const signupController = require("../app/controllers/signupController"); 
-const sessionController = require("../app/controllers/sessionController");
-const restaurantController = require("../app/controllers/restaurantController");
-const menuController = require("../app/controllers/menuController");
-const itemController = require("../app/controllers/itemController");
-const dashboardController = require("../app/controllers/dashboardController");
+const signupController = require("../app/controllers/manager/signupController"); 
+const sessionController = require("../app/controllers/manager/sessionController");
+const restaurantController = require("../app/controllers/manager/restaurantController");
+const menuController = require("../app/controllers/manager/menuController");
+const itemController = require("../app/controllers/manager/itemController");
+const dashboardController = require("../app/controllers/manager/dashboardController");
 
 const authMiddleware = require("../app/middlewares/auth");
 
