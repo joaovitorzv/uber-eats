@@ -19,14 +19,14 @@ class Order extends Model {
   static associate(models) {
     this.belongsTo(models.Customer, {
       foreignKey: 'customer_id',
-      as: 'customer'
+      as: 'Customer'
     });
   }
 
   static associate(models) {
     this.belongsTo(models.Restaurant, {
       foreignKey: 'restaurant_id',
-      as: 'restaurant'
+      as: 'Restaurant'
     });
   }
 

@@ -43,7 +43,7 @@ module.exports = {
     total = Math.round((total + Number.EPSILON) * 100) / 100;
 
     const order = await Order.create({
-      customer_id: '1',
+      customer_id: customer_id,
       restaurant_id,
       items,
       subtotal,
