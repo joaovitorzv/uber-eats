@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
-
-const authConfig = require('../../../config/auth');
-const Restaurant = require("../../models/Restaurant");
 const Yup = require("yup");
+
+const Restaurant = require("../../models/Restaurant");
+const authConfig = require('../../../config/auth');
 
 
 class sessionController {

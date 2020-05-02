@@ -1,23 +1,20 @@
 const Sequelize = require("sequelize");
 const dbConfig = require("../config/database");
 
-/*
-* Manager models
-*/
-
+// Manager models
 const Restaurant = require('../app/models/Restaurant');
 const Menu = require('../app/models/Menu');
 const Item = require('../app/models/Item');
 const Dashboard = require('../app/models/Dashboard');
 
-/*
-* Customer Models
-*/
-
+// Customer Models
 const Customer = require('../app/models/Customer');
 
 
-const models = [Restaurant, Menu, Item, Dashboard, Customer];
+// Core models
+const Order = require('../app/models/Order');
+
+const models = [Restaurant, Menu, Item, Dashboard, Customer, Order];
 
 class Database {
   constructor() {
