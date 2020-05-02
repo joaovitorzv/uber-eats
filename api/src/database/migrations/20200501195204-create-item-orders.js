@@ -23,7 +23,7 @@ module.exports = {
         },
   
         items: {
-          type: Sequelize.ARRAY,
+          type: Sequelize.ARRAY(Sequelize.JSONB),
           allowNull: false,
         },
   
