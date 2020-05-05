@@ -49,6 +49,9 @@ _algumas funcionalidades ainda estão em desenvolvimento_
 O objetivo deste projeto, é aprender coisas que serão utilizadas em um ambiente real de trabalho. me desafiei a criar este projeto para enxergar o meu nivel de conhecimento e colocar como projeto no meu portfolio.
 
 
+### 🔥 Como rodar esse projeto
+*// TODO*
+
 
 ### :memo: Licença
 
