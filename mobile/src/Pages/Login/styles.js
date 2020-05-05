@@ -5,12 +5,23 @@ export const Container = styled.View`
   align-items: center;
 `;
 
+export const Image = styled.Image`
+  flex: 1;
+  width: 50;
+  height: 50;
+`;
+
 export const Card = styled.View`
   background-color: #fafafa;
   width: 95%;
   margin-top: 10%;
   padding: 4%;
   margin-bottom: 5%;
+`;
+
+export const CardTitle = styled.Text`
+  font-size: 28px;
+  font-weight: bold;
 `;
 
 export const Input = styled.TextInput`
@@ -35,6 +46,7 @@ export const CreateAccount = styled.TouchableOpacity`
 `;
 
 export const Text = styled.Text`
+  font-size: 18px;
   color: #05C167;
   margin-top: 15px;
 `;

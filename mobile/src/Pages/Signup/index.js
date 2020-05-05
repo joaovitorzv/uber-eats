@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+Icon.loadFont();
 
 import {
+  Header,
+  BackLink,
+  Text,
   Container, 
   Card,
   Input,
   LoginButton,
-  CreateAccount,
-  Text,
+  CardTitle,
   TextButton
 } from './styles';
 
 export default function Login({ navigation }) {
-
   return (
+    <>
+    <Header>
+      <BackLink onPress={() => navigation.goBack()}>
+        <Icon name="chevron-left" size={24} color="#000" />
+        <Text>Back</Text>
+      </BackLink>
+    </Header>
+
     <Container>
       <Card>
+        <CardTitle>Create Account</CardTitle>
+
         <Input placeholder="Name"/>
         <Input placeholder="Address"/>
         <Input placeholder="District"/>
@@ -26,10 +38,7 @@ export default function Login({ navigation }) {
       <LoginButton onPress={() => {}}>
         <TextButton>Create</TextButton>
       </LoginButton>
-
-      <CreateAccount onPress={() => navigation.navigate('Signup')}>
-        <Text>Already have an account?</Text>
-      </CreateAccount>
     </Container>
+    </>
   )
 }
