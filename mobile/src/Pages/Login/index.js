@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -19,6 +18,8 @@ import { ErrorText } from '../../globalStyles';
 
 import Logo from '../../assets/login-logo.png';
 
+import { AuthContext } from '../../Routes';
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Put a valid email').required('Email is required'),
   password: Yup.string().required('Password is required'),
@@ -26,13 +27,15 @@ const validationSchema = Yup.object().shape({
 
 export default function Login({ navigation }) {
 
+  const { login } = React.useContext(AuthContext);
+
   return (
     <Container>
       <Image source={Logo} style={{ width: 100, height: 100, resizeMode: 'contain', marginTop: 30 }}/>
       
       <Formik
         initialValues={{ email: '', password: '' }}
-        onSubmit={values => console.log(values)}
+        onSubmit={(values) => login({ email: values.email, password: values.password })}
         validationSchema={validationSchema}
       >
       {({ handleChange, handleBlur, handleSubmit, touched, errors, values }) => (
