@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import {
   Container,
@@ -11,10 +12,17 @@ import {
   LoginButton,
   CreateAccount,
   Text,
-  TextButton
+  TextButton,
 } from './styles';
 
+import { ErrorText } from '../../globalStyles';
+
 import Logo from '../../assets/login-logo.png';
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().email('Put a valid email').required('Email is required'),
+  password: Yup.string().required('Password is required'),
+});
 
 export default function Login({ navigation }) {
 
@@ -25,8 +33,9 @@ export default function Login({ navigation }) {
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={values => console.log(values)}
+        validationSchema={validationSchema}
       >
-      {({ handleChange, handleBlur, handleSubmit, values }) => (
+      {({ handleChange, handleBlur, handleSubmit, touched, errors, values }) => (
         <>
           <Card>
             <CardTitle>Login</CardTitle>
@@ -37,6 +46,7 @@ export default function Login({ navigation }) {
                 onBlur={handleBlur('email')}
                 value={values.email} 
               />
+              {errors.email && touched.email && <ErrorText>{errors.email}</ErrorText>}
               <Input 
                 placeholder="Password" 
                 secureTextEntry={true} 
@@ -44,6 +54,7 @@ export default function Login({ navigation }) {
                 onBlur={handleBlur('password')}
                 value={values.password}
               />
+              {errors.password && touched.password && <ErrorText>{errors.password}</ErrorText>}
           </Card>
 
           <LoginButton onPress={() => handleSubmit()}>

@@ -22,6 +22,7 @@ export const Text = styled.Text`
 export const Container = styled.View`
   flex: 1;
   align-items: center;
+  padding-bottom: 2%;
 `;
 
 export const Card = styled.View`
@@ -29,6 +30,11 @@ export const Card = styled.View`
   width: 95%;
   padding: 4%;
   margin-bottom: 5%;
+`;
+
+export const ErrorText = styled.Text`
+  font-size: 12px;
+  color: #e80e41; 
 `;
 
 export const CardTitle = styled.Text`
