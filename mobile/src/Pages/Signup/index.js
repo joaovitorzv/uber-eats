@@ -19,6 +19,8 @@ import {
 
 import { ErrorText, ScrollView } from '../../globalStyles';
 
+import api from '../../services/api';
+
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
   address: Yup.string().required('Address is required'),
@@ -28,6 +30,23 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Login({ navigation }) {
+  const emailsAlreadyInUse = [];
+  async function handleSubmit(values, {
+    setSubmitting,
+    setFieldError
+  }) {
+    try {
+      await api.post('/signup', values);
+      setSubmitting(false)
+      navigation.goBack();
+    } 
+    catch(err) {
+      setFieldError('email', 'Email already registered')
+      emailsAlreadyInUse.push(err.data);
+      setSubmitting(false);
+    }
+  }
+
   return (
     <>
     <Header>
@@ -48,9 +67,18 @@ export default function Login({ navigation }) {
           password: '',
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
+        validate={
+          values => {
+            let errors = {};
+            if (emailsAlreadyInUse.includes(values.email)) {
+              errors.email = 'Email already in use'
+            }
+            return errors;
+          }
+        }
       >
-        {({ handleSubmit, handleBlur, handleChange, errors, values, touched }) => (
+        {({ handleSubmit, handleBlur, handleChange, errors, values, touched, isSubmitting }) => (
         <>
         <Card>
           <CardTitle>Create Account</CardTitle>
@@ -99,8 +127,8 @@ export default function Login({ navigation }) {
 
         </Card>
 
-        <LoginButton onPress={() => handleSubmit()}>
-          <TextButton>Create</TextButton>
+        <LoginButton onPress={() => handleSubmit()} disabled={isSubmitting}>
+          <TextButton>{isSubmitting ? 'Creating...' : 'Create'}</TextButton>
         </LoginButton>
         </>
       )}

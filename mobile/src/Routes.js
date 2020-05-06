@@ -82,7 +82,7 @@ export default function App() {
         // After getting token, we need to persist the token using `AsyncStorage`
         // In the example, we'll use a dummy token
 
-        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+        dispatch({ type: 'LOGIN', token: 'dummy-auth-token' });
       },
     }),
     []
@@ -98,7 +98,11 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {state.userToken == null ? (
             <>
-              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen 
+                name="Login" 
+                component={Login}
+                options={{ title: 'Login', animationTypeForReplace: state.isSignout ? 'pop' : 'push' }}
+              />
               <Stack.Screen name="Signup" component={Signup} />
             </>
           ) : (

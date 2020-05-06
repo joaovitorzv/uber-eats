@@ -1,7 +1,7 @@
-import { create } from 'apisauce';
+import axios from 'axios';
 
-const api = create({
-  baseURL: 'https://localhost:3333/customer',
+const api = axios.create({
+  baseURL: 'http://192.168.100.152:3333/customer'
 });
 
 export default api;
