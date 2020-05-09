@@ -34,3 +34,11 @@ export const FilterButton = styled.div `
 export const SubTitleItem = styled.div`
   padding: 20px 0; 
 `;
+
+export const ItemsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 15px;
+  row-gap: 35px;
+`;

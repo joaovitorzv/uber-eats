@@ -8,6 +8,7 @@ import {
   FilterContainer,
   FilterButton,
   SubTitleItem,
+  ItemsGrid
 } from './styles';
 
 import { Title, SmallText } from '../../GlobalStyles';
@@ -31,8 +32,14 @@ export default function Home() {
       <Title size="28px">Free deliveries</Title>
       <SmallText>Your favorites food without delivery fee</SmallText>
     </SubTitleItem>
+    
 
-    <Item />
+    <ItemsGrid>
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+    </ItemsGrid>
 
     </>
   )

@@ -26,7 +26,8 @@ export const Title = styled.h2`
   @import url('https://fonts.googleapis.com/css?family=Raleway:600&display=swap');
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  font-size: ${props => props.size || '16px'}
+  font-size: ${props => props.size || '16px'};
+  color: black;
 
 `;
 
