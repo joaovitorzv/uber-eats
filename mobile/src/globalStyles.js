@@ -8,3 +8,9 @@ export const ErrorText = styled.Text`
 export const ScrollView = styled.ScrollView`
 
 `;
+
+export const PageTitle = styled.Text`
+  font-size: 27px;
+  color: black;
+  font-weight: bold;
+`;

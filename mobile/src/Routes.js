@@ -10,6 +10,7 @@ export const AuthContext = React.createContext();
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Restaurants from './Pages/Restaurants';
+import Customer from './Pages/Customer';
 
 import SplashScreen from './Components/SplashScreen'
 
@@ -54,7 +55,6 @@ export default function App() {
       } catch (e) {
         // Restoring token failed
       }
-
       // After restoring token, we may need to validate it in production apps
 
       // This will switch to the App screen or Auth screen and this loading
@@ -72,18 +72,9 @@ export default function App() {
         // We will also need to handle errors if sign in failed
         // After getting token, we need to persist the token using `AsyncStorage`
         // In the example, we'll use a dummy token
-
-        dispatch({ type: 'LOGIN', token: 'dummy-auth-token' });
+        dispatch({ type: 'LOGIN', token: data.token});
       },
       signOut: () => dispatch({ type: 'SIGN_OUT'}),
-      signUp: async data => {
-        // In a production app, we need to send user data to server and get a token
-        // We will also need to handle errors if sign up failed
-        // After getting token, we need to persist the token using `AsyncStorage`
-        // In the example, we'll use a dummy token
-
-        dispatch({ type: 'LOGIN', token: 'dummy-auth-token' });
-      },
     }),
     []
   );
@@ -106,7 +97,10 @@ export default function App() {
               <Stack.Screen name="Signup" component={Signup} />
             </>
           ) : (
-            <Stack.Screen name="Restaurants" component={Restaurants} />
+            <>
+              <Stack.Screen name="Restaurants" component={Restaurants} />
+              <Stack.Screen name="Customer" component={Customer} />
+            </>
           )}
         </Stack.Navigator>
       </AuthContext.Provider>

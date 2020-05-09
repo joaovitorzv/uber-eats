@@ -1,22 +1,43 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert, FlatList } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { Logout } from './styles';
 
 import { AuthContext } from '../../Routes';
 
-export default function Login() {
+import api from '../../services/api';
 
-  const { signOut } = React.useContext(AuthContext);
+import Navigation from '../../Components/Navigation';
+
+export default function Restaurants() {
+  const [restaurants, setRestaurants] = React.useState('');
+
+  async function loadRestaurants() {
+    const response = await api.get('/restaurants', {
+      headers: {
+        authorization: await AsyncStorage.getItem('userToken')
+      }
+    });
+
+    setRestaurants(response.data)
+  }
+
+  React.useEffect(() => {
+    loadRestaurants();
+  }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Restaurants</Text>
+      <FlatList
+        data={restaurants}
+        keyExtractor={restaurant => String(restaurant.id)}
+        renderItem={({ item: restaurant }) => (
+          <Text>Culinary: {restaurant.culinary}</Text>
+        )}
+      />
 
-      <Logout onPress={() => signOut()}>
-        <Text>Logout</Text>
-      </Logout>
+      <Navigation />
     </View>
   )
 }

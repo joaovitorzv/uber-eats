@@ -1,24 +1,5 @@
 import styled from 'styled-components/native';
 
-export const Header = styled.View`
-  padding: 5% 2%;
-`;
-
-export const BackLink = styled.TouchableOpacity`
-  width: 90px;
-  padding: 10px;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const Text = styled.Text`
-  color: black;
-  font-weight: bold;
-  margin-left: 10px;
-`;
-
 export const Container = styled.View`
   flex: 1;
   align-items: center;

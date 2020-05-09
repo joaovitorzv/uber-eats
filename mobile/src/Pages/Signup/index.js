@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-Icon.loadFont();
-
 import {
-  Header,
-  BackLink,
-  Text,
   Container, 
   Card,
   Input,
@@ -18,6 +12,8 @@ import {
 } from './styles';
 
 import { ErrorText, ScrollView } from '../../globalStyles';
+
+import HeaderBack from '../../Components/HeaderBack';
 
 import api from '../../services/api';
 
@@ -49,12 +45,7 @@ export default function Login({ navigation }) {
 
   return (
     <>
-    <Header>
-      <BackLink onPress={() => navigation.goBack()}>
-        <Icon name="chevron-left" size={24} color="#000" />
-        <Text>Back</Text>
-      </BackLink>
-    </Header>
+    <HeaderBack navigate={navigation} />
     
     <ScrollView>
     <Container>
