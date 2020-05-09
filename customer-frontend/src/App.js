@@ -1,9 +1,14 @@
 import React from 'react';
 
+import Routes from './Routes';
+
+import GlobalStyles from './GlobalStyles';
+
 export default function App() {
   return (
-    <h1>
-      Uber
-    </h1>
-  )
+    <div className="App">
+      <GlobalStyles />
+      <Routes />
+    </div>
+  );
 }
