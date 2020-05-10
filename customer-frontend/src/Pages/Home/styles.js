@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin: 0 auto;
+  max-width: 1250px;
+`;
 
+export const Filter = styled.div`
 `;
 
 export const FilterContainer = styled.div`
@@ -12,6 +16,10 @@ export const FilterContainer = styled.div`
 `;
 
 export const FilterButton = styled.div `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   border: none;
   background-color: ${props => props.isSelected ? 'black' : 'rgb(240, 240, 240)'};
   color: ${props => props.isSelected ? 'white' : 'black'};
@@ -21,21 +29,14 @@ export const FilterButton = styled.div `
   font-size: 14px;
   margin-right: 5px;
   border-radius: 50px;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer;
 
   svg {
     margin-right: 5px;
   }
 `;
 
-export const SubTitleItem = styled.div`
-  padding: 20px 0; 
-`;
-
-export const ItemsGrid = styled.div`
+export const RestaurantsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;

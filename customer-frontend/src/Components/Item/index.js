@@ -1,31 +1,21 @@
 import React from 'react';
 
-import Img from '../../assets/thumb-icon.jpeg';
-
 import {
   Container,
-  Thumbnail,
-  Image,
-  Favorite
+  Description,
+  Thumbnail
 } from './styles';
-
-import { Title } from '../../GlobalStyles';
 
 export default function Item() {
   return (
-    <Container>
-      <a href="#">
-        <Thumbnail>
-          <Image src={Img} />
-        </Thumbnail>
-
-        <div className="title-container">
-          <Title size="17px">McDonald's - Guarulhos Paulo Faccini</Title>
-          <p>15–25 min • $</p>
-        </div>
-
-        <p>Burgers</p>
-      </a>
+    <Container onClick={() => alert('Fuedase')}>
+        <Description>
+          <h2>Original Smash</h2>
+          <p>Pão artesão anal, Burger top 100g, queijo cualho derretido na grelha salve alek caraio mec trab xesquedele salve mec trab</p>
+        
+          <h2 className="price">R$12.99</h2>
+        </Description>
+        <Thumbnail />
     </Container>
   )
 }

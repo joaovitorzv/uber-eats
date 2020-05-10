@@ -2,10 +2,9 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  padding: 2px 0;
+  padding: 2px 40px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #dbdbdb;
 `;
 
 export const Logo = styled.img`

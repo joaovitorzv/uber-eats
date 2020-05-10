@@ -1,44 +1,54 @@
 import styled from 'styled-components';
 
+import ThumbnailPic from '../../assets/thumbnail.jpeg';
+
 export const Container = styled.div`
+  border: 1px solid #dedede;
   display: flex;
-  
-  a {
-    text-decoration: none;
+  justify-content: flex-start;
+
+  &:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    transition-duration: 400ms;
   }
-  
+`;
+
+export const Description = styled.div`
+  max-width: 250px;
+  padding: 15px;
+  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+  font-family: 'Raleway', sans-serif;
+
+  h2 {
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+
+  .price {
+    padding-top: 20px;
+  }
+
   p {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 12px;
-    color: #5e5e5e;
-    padding-bottom: 10px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 14px;
+    color: #6e6e6e;
   }
-
-  .title-container {
-    padding: 15px 0;
-    border-bottom: 1px solid #cfcfcf; 
-    margin-bottom: 10px;
-
-    p {
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      color: black;
-      font-size: 14px;
-      font-weight: 100;
-      color: black;
-    }
-  } 
 `;
 
 export const Thumbnail = styled.div`
-  overflow: hidden;
-  height: 270px;
-  width: 400px;
-  border: none;
-  background-color: white;
-`;
+  width: 280px;
+  height: 150px;
 
-export const Image = styled.img`
-  max-width: 100%;
+  background: url(${ThumbnailPic}) no-repeat center center;
+  background-size: cover;
 `;
-
-export const Favorite = styled.div``; 
