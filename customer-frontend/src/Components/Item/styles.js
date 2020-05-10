@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import ThumbnailPic from '../../assets/thumbnail.jpeg';
 
 export const Container = styled.div`
-  border: 1px solid #dedede;
+  border: ${props => props.haveOnBasket ? '2px solid #21a453' : '1px solid #dedede'};
   display: flex;
   justify-content: flex-start;
 
   &:hover {
-    border: 1px solid black;
+    border: ${props => props.haveOnBasket ? '2px solid black' : '1px solid black'};
     cursor: pointer;
     transition-duration: 400ms;
   }
@@ -51,4 +51,19 @@ export const Thumbnail = styled.div`
 
   background: url(${ThumbnailPic}) no-repeat center center;
   background-size: cover;
+
+  display: flex;
+  justify-content: flex-end;
+`;
+
+
+export const BasketQuantity = styled.div `
+  display: ${props => props.haveOnBasket ? 'flex' : 'none'};
+  height: 30px;
+  padding: 2px 10px;
+  background-color: #21a453;
+  color: white;
+
+  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+  font-family: 'Raleway', sans-serif;
 `;

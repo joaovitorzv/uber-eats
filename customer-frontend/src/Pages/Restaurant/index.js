@@ -54,7 +54,7 @@ export default function Restaurant() {
 
       <GridItems>
         <Item />
-        <Item />
+        <Item onBasket={1} />
         <Item />
         <Item />
         <Item />
