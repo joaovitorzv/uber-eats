@@ -2,8 +2,10 @@ import React from 'react';
 
 import Header from '../../Components/Header';
 import Item from '../../Components/Item';
+import Basket from '../../Components/Basket';
 
 import {
+  HeaderContainer,
   BannerContainer,
   RestaurantInfo,
   MenuContainer,
@@ -21,7 +23,10 @@ import { AiFillTag } from 'react-icons/ai';
 export default function Restaurant() {
   return (
     <>
-    <Header />
+    <HeaderContainer>
+      <Header />
+      <Basket />
+    </HeaderContainer>
 
     <BannerContainer>
       <RestaurantInfo>
@@ -61,6 +66,7 @@ export default function Restaurant() {
       </GridItems>
 
     </MenuContainer>  
+    
     </>
   )
 }

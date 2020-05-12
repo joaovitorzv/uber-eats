@@ -2,13 +2,15 @@ import React from 'react';
 
 import Header from '../../Components/Header';
 import RestaurantItem from '../../Components/RestaurantItem';
+import Basket from '../../Components/Basket';
 
 import {  
+  HeaderContainer,
   Container,
   Filter,
   FilterContainer,
   FilterButton,
-  RestaurantsGrid
+  RestaurantsGrid,
 } from './styles';
 
 import { SubTitleItem, Title, SmallText} from '../../GlobalStyles';
@@ -19,7 +21,10 @@ import { FiShoppingBag } from 'react-icons/fi';
 export default function Home() {
   return (
     <>
-    <Header />
+    <HeaderContainer>
+      <Header />
+      <Basket />
+    </HeaderContainer>
 
     <Container>
       <Filter>

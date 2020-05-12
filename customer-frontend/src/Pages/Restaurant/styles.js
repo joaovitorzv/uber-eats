@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import Banner from '../../assets/banner.jpeg'
 
+export const HeaderContainer = styled.div`
+  display: flex;
+`;
+
 export const BannerContainer = styled.div`
   height: 380px;
   background: url(${Banner}) no-repeat center center;

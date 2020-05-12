@@ -55,22 +55,3 @@ export const Search = styled.button`
     margin-right: 5px;
   }
 `;
-
-export const BasketButton = styled.button`
-  background-color: white;
-  border: none;
-  margin-left: 30px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  
-  p {
-    font-size: 17px;
-    color: #21a453;
-  }
-  
-  svg {
-    margin-right: 10px;
-  }
-`;
