@@ -43,7 +43,7 @@ _algumas funcionalidades ainda estão em desenvolvimento_
 	- Cadastro/Login
 	- Visualizar todos restaurantes e cardapios
 	- Realizar o pagamento de um pedido
-	- Resposta do restaurante em real time
+	- Resposta do restaurante (real time)
 
 ### 🎯 Objetivo
 O objetivo deste projeto, é aprender coisas que serão utilizadas em um ambiente real de trabalho. me desafiei a criar este projeto para enxergar o meu nivel de conhecimento e colocar como projeto no meu portfolio.
