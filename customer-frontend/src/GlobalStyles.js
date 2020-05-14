@@ -8,6 +8,9 @@ export default createGlobalStyle`
   padding: 0;
   outline: none;
   box-sizing: border-box;
+
+  :focus {outline:none;}
+  ::-moz-focus-inner {border:0;}
 }
 
 `;
