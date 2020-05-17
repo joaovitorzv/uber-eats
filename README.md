@@ -32,8 +32,6 @@ A ideia principal é criar uma aplicação baseada nas principais funcionalidade
 ### 💡 Principais Funcionalidades 
 <hr> 
 
-_algumas funcionalidades ainda estão em desenvolvimento_
-
 - <b>Versão Web (Apenas para restaurantes)</b>
 	- Cadastro de restaurantes
 	- Cadastro de Items  no cardapio
@@ -49,9 +47,36 @@ _algumas funcionalidades ainda estão em desenvolvimento_
 O objetivo deste projeto, é aprender coisas que serão utilizadas em um ambiente real de trabalho. me desafiei a criar este projeto para enxergar o meu nivel de conhecimento e colocar como projeto no meu portfolio.
 
 
-### 🔥 Como rodar esse projeto
-*// TODO*
+### 🔥 Como rodar esse projeto (How to run this project)
+***To run API***
 
+Create postgre docker container
+```sh
+$ docker run --name ubereats -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+```
+Install the packages run migrations and start API
+
+```sh
+$ yarn install
+$ yarn sequelize db:migrate
+$ yarn dev
+```
+
+***To run Frontend***
+```sh
+$ yarn install
+$ yarn start
+```
+
+***To run Mobile***
+
+> **Note:** The mobile has been discontinued, but if you want to run it, just follow the following commands
+
+
+```sh
+$ yarn install
+$ react-native run-android (or run-ios)
+```
 
 ### :memo: Licença
 
