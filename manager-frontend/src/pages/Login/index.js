@@ -22,7 +22,7 @@ export default function Login({ history }) {
     setFieldError
   }) {
     try {
-      const response = await api.post('/sessions', values);
+      const response = await api.post('/manager/sessions', values);
       const restaurant = JSON.stringify(response.data.user);
       signIn(response.data.token, restaurant);
       setSubmitting(false);

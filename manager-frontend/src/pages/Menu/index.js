@@ -34,7 +34,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchData() {
       const token = localStorage.getItem('authorization');
-      const response = await api.get('/restaurant', {
+      const response = await api.get('/manager/restaurant', {
         headers: {
           authorization: token
         }
@@ -61,7 +61,7 @@ export default function Dashboard() {
       formData.append('banner', values.banner);
 
       if (restaurant.active) {
-        await api.put('/update-menu', 
+        await api.put('/manager/update-menu', 
           formData, {
             headers: {
               authorization: localStorage.getItem('authorization'),
@@ -71,7 +71,7 @@ export default function Dashboard() {
         );
         
       } else {
-        await api.post('/create-menu', 
+        await api.post('/manager/create-menu', 
           formData, {
             headers: {
               authorization: localStorage.getItem('authorization'),

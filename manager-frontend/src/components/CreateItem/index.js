@@ -28,7 +28,7 @@ export default function CreateItem() {
       formData.append('price', values.item_price);
       formData.append('thumbnail', values.item_thumbnail);
 
-      const response = await api.post('/create-item', formData, {
+      const response = await api.post('/manager/create-item', formData, {
         headers: {
           authorization: localStorage.getItem('authorization'),
           'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,

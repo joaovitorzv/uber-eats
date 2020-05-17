@@ -18,7 +18,7 @@ export default function UpdateInformation(props) {
   async function handleSubmit(values, { setSubmitting }) {
     try {
       console.log(values);
-      const response = await api.put('/update-restaurant', values, {
+      const response = await api.put('/manager/update-restaurant', values, {
         headers: {
           authorization: localStorage.getItem('authorization')
         }

@@ -27,7 +27,7 @@ export default function CreateAccount({ history }) {
     setFieldError
   }) {
     try {
-      await api.post('/signup', values);
+      await api.post('/manager/signup', values);
       setSubmitting(false);
       history.push('/session')
     } 
