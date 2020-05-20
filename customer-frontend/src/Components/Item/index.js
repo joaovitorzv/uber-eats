@@ -11,9 +11,10 @@ import {
 
 export default function Item({ id, title, description, price }) {
   const item = {name: title, quantity: 1, price: price, id}
-  const {basket, setBasket} = useBasket();
+  const {setBasket, setShowBasket} = useBasket();
 
   const addToBasket = () => {
+    setShowBasket('block')
     let items = [];
 
     items.push(item);

@@ -18,7 +18,7 @@ import { IoMdClose } from 'react-icons/io';
 import { MdShoppingBasket } from 'react-icons/md';
 
 export default function Basket() {
-  const {basket, setBasket} = useBasket();
+  const {basket, setBasket, showBasket, setShowBasket} = useBasket();
 
   const newBasket = JSON.parse(localStorage.getItem('basket')) || [];
 
@@ -29,7 +29,6 @@ export default function Basket() {
     setBasket(newBasket);
   }
 
-  const [showBasket, setShowBasket] = useState('block');
   return (
     <>
     <BasketButton onClick={() => showBasket === 'none' ? setShowBasket('block') : setShowBasket('none')}>
@@ -60,9 +59,12 @@ export default function Basket() {
       </div>
 
       <PaymentOrder>
-        Next: Payment R${basket
-          .map( item => item.price)
-          .reduce((acc, curr) => acc + curr, 0)}
+        Next: Payment R${
+        basket
+          .map( item => parseFloat(item.price))
+          .reduce((acc, curr) => acc + curr, 0)
+          .toFixed(2)
+        }
       </PaymentOrder>
       </> 
       : <p>Your basket is empty</p> 
