@@ -10,7 +10,21 @@
 </p></a> <br>
 
 ### Screenshots  📷
-*Em breve*
+
+*Restaurant manager*
+<p float="left">
+ <img src="/screenshots/signup-page.png" align="middle" width="430px"/>
+ <img src="/screenshots/menu-manager-page.png" align="middle" width="430px"/>
+</p>
+
+*Customer*
+
+<p float="left">
+ <img src="/screenshots/home-customer-page.png" align="middle" width="430px"/>
+ <img src="/screenshots/restaurant-customer-page.png" align="middle" width="430px"/>
+</p>
+
+
 
 
 ### :rocket: Tecnologias usadas
