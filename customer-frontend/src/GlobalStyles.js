@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export default createGlobalStyle`
 
 * {
@@ -15,7 +17,7 @@ export default createGlobalStyle`
 
 `;
 
-export const Anchor = styled.a`
+export const Anchor = styled(Link)`
   text-decoration: none;
   color: black;
 `;

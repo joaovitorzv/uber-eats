@@ -15,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const Description = styled.div`
-  max-width: 250px;
+  width: 240px;
   padding: 15px;
   @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
   font-family: 'Raleway', sans-serif;
@@ -46,7 +46,7 @@ export const Description = styled.div`
 `;
 
 export const Thumbnail = styled.div`
-  width: 280px;
+  width: 170px;
   height: 150px;
 
   background: url(${ThumbnailPic}) no-repeat center center;

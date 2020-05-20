@@ -6,7 +6,7 @@ import {
   Container,
   Thumbnail,
   Image,
-  Favorite
+  LinkToRestaurant
 } from './styles';
 
 import { Title } from '../../GlobalStyles';
@@ -14,7 +14,7 @@ import { Title } from '../../GlobalStyles';
 export default function RestaurantItem() {
   return (
     <Container>
-      <a href="/restaurant/name">
+      <LinkToRestaurant to="/restaurant/name">
         <Thumbnail>
           <Image src={Img} />
         </Thumbnail>
@@ -31,7 +31,7 @@ export default function RestaurantItem() {
         </div>
 
         <p>Burgers</p>
-      </a>
+      </LinkToRestaurant>
     </Container>
   )
 }

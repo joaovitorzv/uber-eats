@@ -24,7 +24,7 @@ export const Container = styled.div`
   position: fixed;
   background-color: white;
   right: 40px;
-  top: 10%;
+  bottom: 0;
   width: 400px;
   padding: 1.5%;
   display: ${props => props.display};
@@ -73,4 +73,35 @@ export const PaymentOrder = styled.button`
   padding: 15px 0;
 
   cursor: pointer;
+`;
+
+export const BasketItem = styled.div`
+  border-bottom: 1px solid #dbdbdb;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  
+  h3 {
+    font-weight: 400;
+
+    button {
+      border: none;
+      background-color: white;
+      color: #858585;
+      margin-left: 5px;
+
+      &:hover {
+        color: black;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  span {
+    color: #858585;
+  }
+
 `;

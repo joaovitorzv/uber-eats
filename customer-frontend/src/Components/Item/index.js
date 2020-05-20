@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useBasket } from '../../Context/BasketContext';
+
 import {
   Container,
   Description,
@@ -7,18 +9,32 @@ import {
   BasketQuantity,
 } from './styles';
 
-export default function Item({ onBasket }) {
-  return (
-    <Container onClick={() => alert('Fuedase')} haveOnBasket={onBasket} >
-        <Description>
-          <h2>Original Smash</h2>
-          <p>Pão artesão anal, Burger top 100g, queijo cualho derretido na grelha salve alek caraio mec trab xesquedele salve mec trab</p>
-        
-          <h2 className="price">R$12.99</h2>
+export default function Item({ id, title, description, price }) {
+  const item = {name: title, quantity: 1, price: price, id}
+  const {basket, setBasket} = useBasket();
+
+  const addToBasket = () => {
+    let items = [];
+
+    items.push(item);
+    items  = items.concat(JSON.parse(localStorage.getItem('basket') ||'[]'));
+    console.log(items);
+    
+    localStorage.setItem('basket', JSON.stringify(items))
+    setBasket(items);
+  }
+  
+  
+  return (  
+    <Container onClick={() => addToBasket(id)}>
+        <Description> 
+          <h2>{title}</h2>
+          <p>{description}</p>
+
+          <h2 className="price">R${price}</h2>
         </Description>
         <Thumbnail>
-          <BasketQuantity haveOnBasket={onBasket}>
-            {onBasket}
+          <BasketQuantity>
           </BasketQuantity>
         </Thumbnail>
     </Container>

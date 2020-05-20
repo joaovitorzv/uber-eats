@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { 
   HeaderContainer, 
@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <LocationOptions>
-        <Anchor href="/">
+        <Anchor to="/">
           <Logo src={HorizontalBrand} />
         </Anchor>
 
@@ -43,7 +43,7 @@ export default function Header() {
         </Search>
 
         <Title>
-          <Anchor href="/">Sign in</Anchor>
+          <Anchor to="/">Sign in</Anchor>
         </Title>
 
       </SearchOptions>

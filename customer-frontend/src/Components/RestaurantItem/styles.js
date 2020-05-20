@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
   display: flex;
   
@@ -57,3 +59,6 @@ export const Image = styled.img`
 `;
 
 export const Favorite = styled.div``; 
+
+
+export const LinkToRestaurant = styled(Link)``;

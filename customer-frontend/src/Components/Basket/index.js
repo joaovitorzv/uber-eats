@@ -1,68 +1,76 @@
 import React, { useState } from 'react';
+ 
+import { useBasket } from '../../Context/BasketContext';
 
 import { 
   Container, 
   CloseButton,
   BasketButton,
-  BasketItem,
   PaymentOrder,
+  BasketItem,
 } from './styles';
 
 import { 
   Title,
-  SmallText, 
 } from '../../GlobalStyles';
 
 import { IoMdClose } from 'react-icons/io';
 import { MdShoppingBasket } from 'react-icons/md';
 
-import BasketItems from '../../Components/basketItems';
+export default function Basket() {
+  const {basket, setBasket} = useBasket();
 
-export default function Basket(props) {
+  const newBasket = JSON.parse(localStorage.getItem('basket')) || [];
+
+  function removeItem(itemId) {
+    const findItemIndex = newBasket.findIndex(basketItem => basketItem.id === itemId);
+    newBasket.splice(findItemIndex, 1);
+    localStorage.setItem('basket', JSON.stringify(newBasket));
+    setBasket(newBasket);
+  }
+
   const [showBasket, setShowBasket] = useState('block');
-  const items =  [
-    {id: 0, quantity: 2, name: 'Dogao mec', price: 32.95}, 
-    {id: 1, quantity: 1, name: 'Bavaria', price: 3.00},
-    {id: 2, quantity: 1, name: 'Bavaria', price: 6.00},
-  ];
-  const itemsSum = items
-    .map(item => item.price)
-    .reduce((prev, curr) => prev + curr, 0);
-
-  const [basketItems, setBasketItems] = useState([])
-
   return (
     <>
     <BasketButton onClick={() => showBasket === 'none' ? setShowBasket('block') : setShowBasket('none')}>
       <MdShoppingBasket size={25} color="#21a453" /> 
-      <p>{items.length}</p>
+      <p>{basket.length}</p>
     </BasketButton>
 
     <Container display={showBasket} >
       <CloseButton onClick={() => setShowBasket('none')}>
         <IoMdClose size={25} />
       </CloseButton>
-      {
-      items.length > 0  ? 
+      {basket.length > 0  ? 
       <>
       <Title size="28px">Your order</Title>
-      <p>From restaurant <a href="#">The house</a></p>
+      <p>From restaurant <a href="/restaurant/name">The house</a></p>
 
       <div className="items-container">
-        {items.map(item => ( 
-          <BasketItems itemData={item} key={item.id}/> 
+        {basket.map(item => ( 
+        <BasketItem key={item.id} >
+          <h3 className="item-name">
+            <span>{item.quantity}x </span> 
+            {item.name}
+            <button onClick={() => removeItem(item.id)}>Remove</button>
+          </h3>
+          <h3 className="item-price">R${item.price}</h3>
+         </BasketItem> 
         ))}
       </div>
 
-      <PaymentOrder onClick={() => setBasketItems(items)}>
-        Next: Payment R${itemsSum}
+      <PaymentOrder>
+        Next: Payment R${basket
+          .map( item => item.price)
+          .reduce((acc, curr) => acc + curr, 0)}
       </PaymentOrder>
-      </>
+      </> 
       : <p>Your basket is empty</p> 
       }
 
-      {console.log(basketItems) }
     </Container>
     </>
   )
 }
+
+
