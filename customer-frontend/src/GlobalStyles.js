@@ -15,6 +15,7 @@ export default createGlobalStyle`
   ::-moz-focus-inner {border:0;}
 }
 
+  
 `;
 
 export const Anchor = styled(Link)`
@@ -57,4 +58,28 @@ export const PrimaryLink = styled.a`
   color: #06c167;
   text-decoration: none;
   font-weight: bold;
+`;
+
+export const SecondaryLink = styled(Link)`
+  color: #06c167;
+  text-decoration: none;
+  font-weight: bold;
+`;
+
+export const BlackButton = styled.button`
+  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+  font-family: 'Raleway', sans-serif;
+  background-color: black;
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 1% 0; 
+  cursor: pointer;
+`;
+
+export const ErrorText = styled.p`
+  font-size: 12px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: red;
 `;

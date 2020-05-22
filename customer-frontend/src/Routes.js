@@ -7,6 +7,7 @@ import PrivateRoute from './Components/PrivateRoute';
 import Home from  './Pages/Home';
 import Restaurant from './Pages/Restaurant';
 import Signup from './Pages/Signup';
+import Login from './Pages/Login';
 import Checkout from './Pages/Checkout';
 
 
@@ -17,8 +18,9 @@ export default function Routes() {
         <PublicRoute restricted={false} path="/" exact component={Home} />
         <PublicRoute restricted={false} path="/restaurant/:id" component={Restaurant} />
         <PublicRoute restricetc={true} path="/signup" component={Signup} />
+        <PublicRoute restricted={true}  path="/login" component={Login} />
 
-        <PrivateRoute restricted={false} path="/checkout" component={Checkout} />
+        <PrivateRoute path="/checkout" component={Checkout} />
       </Switch>
     </BrowserRouter>
   )

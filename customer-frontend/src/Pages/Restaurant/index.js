@@ -30,7 +30,7 @@ export default function Restaurant({ history }) {
     {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 4},
     {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 5},
   ]
-  const response = {id: 2, name: 'The house'}
+  const response = {id: 2, name: 'The house', delivery: 7.98}
 
   return (
     <BasketProvider>
