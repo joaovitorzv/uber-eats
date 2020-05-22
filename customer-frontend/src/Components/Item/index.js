@@ -11,6 +11,7 @@ import {
 
 export default function Item({ id, title, description, price }) {
   const item = {name: title, quantity: 1, price: price, id}
+
   const {setBasket, setShowBasket} = useBasket();
 
   const addToBasket = () => {
@@ -24,7 +25,6 @@ export default function Item({ id, title, description, price }) {
     localStorage.setItem('basket', JSON.stringify(items))
     setBasket(items);
   }
-  
   
   return (  
     <Container onClick={() => addToBasket(id)}>

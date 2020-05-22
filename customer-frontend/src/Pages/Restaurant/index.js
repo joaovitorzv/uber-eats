@@ -22,20 +22,21 @@ import {
 
 import { AiFillTag } from 'react-icons/ai';
 
-export default function Restaurant() {
+export default function Restaurant({ history }) {
   const items = [
     {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 1},
     {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 2},
     {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 3},
     {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 4},
-    {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 5}
+    {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 5},
   ]
+  const response = {id: 2, name: 'The house'}
 
   return (
     <BasketProvider>
       <HeaderContainer>
         <Header />
-        <Basket />
+        <Basket restaurant={response} history={history}/>
       </HeaderContainer>
 
       <BannerContainer>

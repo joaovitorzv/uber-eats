@@ -2,6 +2,8 @@ import React, { useState } from 'react';
  
 import { useBasket } from '../../Context/BasketContext';
 
+import { isAuthenticated } from '../../utils/auth';
+
 import { 
   Container, 
   CloseButton,
@@ -17,7 +19,7 @@ import {
 import { IoMdClose } from 'react-icons/io';
 import { MdShoppingBasket } from 'react-icons/md';
 
-export default function Basket() {
+export default function Basket({ restaurant, history }) {
   const {basket, setBasket, showBasket, setShowBasket} = useBasket();
 
   const newBasket = JSON.parse(localStorage.getItem('basket')) || [];
@@ -27,6 +29,14 @@ export default function Basket() {
     newBasket.splice(findItemIndex, 1);
     localStorage.setItem('basket', JSON.stringify(newBasket));
     setBasket(newBasket);
+  }
+
+  if (basket.length > 0 && !(JSON.parse(localStorage.getItem('restaurantInfo'))) ) {
+    localStorage.setItem('restaurantInfo', JSON.stringify(restaurant));
+  }
+
+  const checkout = () => {
+    isAuthenticated() ? history.push('/checkout') : history.push('/signup')
   }
 
   return (
@@ -58,7 +68,7 @@ export default function Basket() {
         ))}
       </div>
 
-      <PaymentOrder>
+      <PaymentOrder onClick={() => checkout()}>
         Next: Payment R${
         basket
           .map( item => parseFloat(item.price))
