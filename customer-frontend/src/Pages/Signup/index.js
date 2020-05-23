@@ -51,16 +51,16 @@ export default function Signup() {
         >
         {({ handleSubmit, handleChange, values, touched, isSubmitting, errors, handleBlur }) => (
           <form onSubmit={handleSubmit}>
-            {errors.name && touched.name && <ErrorText>{errors.name}</ErrorText>}
             <Input 
               name="name"
-              type="text" 
+              type="text"   
               placeholder="Full name"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
             />
-            {errors.email && touched.email && <ErrorText>{errors.email}</ErrorText>}
+            {errors.name && touched.name && <ErrorText>{errors.name}</ErrorText>}
+            
             <Input 
               name="email"
               type="email"  
@@ -69,7 +69,8 @@ export default function Signup() {
               onBlur={handleBlur}
               value={values.email}
             />
-            {errors.password && touched.password && <ErrorText>{errors.password}</ErrorText>}
+            {errors.email && touched.email && <ErrorText>{errors.email}</ErrorText>}
+            
             <Input 
               name="password"
               type="password" 
@@ -78,10 +79,10 @@ export default function Signup() {
               onBlur={handleBlur}
               value={values.password}
             />
+            {errors.password && touched.password && <ErrorText>{errors.password}</ErrorText>}
 
             <div className="input-group">
-              <div className="input-item">
-                {errors.address && touched.address && <ErrorText>{errors.address}</ErrorText>}
+              <div className="big">
                 <Input 
                   name="address"
                   type="text" 
@@ -90,25 +91,24 @@ export default function Signup() {
                   onBlur={handleBlur}
                   value={values.address}
                 />
+                {errors.address && touched.address && <ErrorText>{errors.address}</ErrorText>}
               </div>
 
-              <div className="input-item">
-                {errors.address_number && touched.address_number && <ErrorText>{errors.address_number}</ErrorText>}
+              <div className="small">
                 <Input 
                   name="address_number"
                   type="number" 
                   placeholder="Number" 
-                  className="small"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.address_number}
                 />
+                {errors.address_number && touched.address_number && <ErrorText>{errors.address_number}</ErrorText>}
               </div>
             </div>
 
             <div className="input-group">
-              <div className="input-item">
-                {errors.city && touched.city && <ErrorText>{errors.city}</ErrorText>}
+              <div className="medium">
                 <Input 
                   name="city"
                   type="text" 
@@ -118,10 +118,11 @@ export default function Signup() {
                   onBlur={handleBlur}
                   value={values.city}
                 />
+                {errors.city && touched.city && <ErrorText>{errors.city}</ErrorText>}
               </div>
 
-              <div className="input-item">
-                {errors.district && touched.district && <ErrorText>{errors.district}</ErrorText>}
+              <div className="medium">
+                
                 <Input 
                   name="district"
                   type="text" 
@@ -131,6 +132,7 @@ export default function Signup() {
                   onBlur={handleBlur}
                   value={values.district}
                 />
+                {errors.district && touched.district && <ErrorText>{errors.district}</ErrorText>}
               </div>
             </div>
 

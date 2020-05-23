@@ -43,20 +43,23 @@ export const FormContainer = styled.div`
   .input-group {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    border: 1px solid green;
+    justify-content: space-between;
     
     .medium {
+      width: 49%;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .big {
+      width: 73%;
+
     }
 
     .small {
-      margin-left: 2%;
-    }
-
-    .input-item {
-      input {
-        padding: 5%;
-      }
+      width: 25%;
     }
   }
   
@@ -79,11 +82,11 @@ export const FormContainer = styled.div`
 export const Input = styled.input`
   border: none;
   background-color: white;
-  padding: 2%;
+  padding: 12px;
   font-size: 16px;
   border: 1px solid #E0E0E0;
   width: 100%;
-  margin-bottom: 1.5%;
+  margin-top: 5px;
 
   &:focus {
     border: 1px solid black;
