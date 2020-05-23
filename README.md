@@ -51,7 +51,7 @@ A ideia principal é criar uma aplicação baseada nas principais funcionalidade
 	- Cadastro de Items  no cardapio
 	- Aceitar Pedidos em real time
 	- Analytics com pagamentos, taxas etc
-- <b>Versão Mobile (Apenas para clientes)</b>
+- <b>Versão (Apenas para clientes)</b>
 	- Cadastro/Login
 	- Visualizar todos restaurantes e cardapios
 	- Realizar o pagamento de um pedido
