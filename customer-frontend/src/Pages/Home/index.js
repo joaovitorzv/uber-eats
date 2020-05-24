@@ -20,12 +20,12 @@ import { SubTitleItem, Title, SmallText} from '../../GlobalStyles';
 import { FaBiking } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 
-export default function Home() {
+export default function Home({ history }) {
   return (
     <BasketProvider>
       <HeaderContainer>
         <Header />
-        <Basket />
+        <Basket history={history} />
       </HeaderContainer>
 
       <Container>

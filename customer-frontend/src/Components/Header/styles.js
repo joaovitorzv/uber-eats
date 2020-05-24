@@ -55,3 +55,54 @@ export const Search = styled.button`
     margin-right: 5px;
   }
 `;
+
+export const CustomerButton = styled.button`
+  background-color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  
+`;
+
+export const ToggleMenuContainer = styled.div`
+`;
+
+export const ToggleMenu = styled.div`
+
+  ul {
+    list-style: none;
+    padding: 2px 0;
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500&display=swap');
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+
+  li {
+    padding: 10px 60px 10px 20px;
+    background-color: white;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: #ebf0ed;
+      transition-duration: 250ms;
+    }
+  }
+
+  .option-icon {
+    padding: 2px 7px;
+    background-color: #ebf0ed;
+    margin-right: 10px;
+    border-radius: 40px;
+  }
+
+  margin-top: 10px;
+  display: ${props => props.toggleMenu};
+  position: fixed;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
+  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
+`;

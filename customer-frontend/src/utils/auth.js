@@ -1,5 +1,6 @@
-export const login = (token) => {
+export const Login = (token, customer) => {
   localStorage.setItem('authorization', token);
+  localStorage.setItem('customer', JSON.stringify(customer));
 }
 
 export const isAuthenticated = () => {

@@ -52,7 +52,7 @@ export const Input = styled.input`
   font-size: 16px;
   border: 1px solid #E0E0E0;
   width: 100%;
-  margin-bottom: 1.5%;
+  margin-top: 1.5%;
 
   &:focus {
     border: 1px solid black;

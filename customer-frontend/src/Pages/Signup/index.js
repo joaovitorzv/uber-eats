@@ -8,6 +8,9 @@ import { SecondaryLink, ErrorText } from '../../GlobalStyles';
 
 import Logo from '../../assets/ue_logo_horizontal.png';
 
+import api from '../../services/api';
+//import { Login } from '../../utils/auth';
+
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
   email: Yup.string().email('Type a valid email').required('Email is required'),
@@ -19,11 +22,23 @@ const validationSchema = Yup.object().shape({
 
 })
 
-export default function Signup() {
+export default function Signup({ history }) {
+  const emailsAlreadyInUse = [];
 
+  async function handleSubmit(values, {
+    setSubmitting,
+    setFieldError
+  }) {
+    try {
+      await api.post('/signup', values) 
+      setSubmitting(false)
+      history.push('/login');
+    } catch(err) {
+      setFieldError('email', 'email already used');
+      emailsAlreadyInUse.push(err.data);
+      setSubmitting(false);
+    }
 
-  function handleSubmit(values) {
-    console.log(values);
   }
 
   return (
@@ -47,7 +62,15 @@ export default function Signup() {
           }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
-          
+          validade={
+            values => {
+              let errors = {};
+              if (emailsAlreadyInUse.includes[values.email]) {
+                errors.email = 'email is already in use'
+              }
+              return errors;
+            }
+          }
         >
         {({ handleSubmit, handleChange, values, touched, isSubmitting, errors, handleBlur }) => (
           <form onSubmit={handleSubmit}>
@@ -137,7 +160,7 @@ export default function Signup() {
             </div>
 
             <SubmitButton type="submit">
-              Submit
+              {isSubmitting ? "Creating account..." : "Submit"}
             </SubmitButton>
           </form>
         )} 

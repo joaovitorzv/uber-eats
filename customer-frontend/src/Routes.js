@@ -17,7 +17,7 @@ export default function Routes() {
       <Switch>
         <PublicRoute restricted={false} path="/" exact component={Home} />
         <PublicRoute restricted={false} path="/restaurant/:id" component={Restaurant} />
-        <PublicRoute restricetc={true} path="/signup" component={Signup} />
+        <PublicRoute restricted={true} path="/signup" component={Signup} />
         <PublicRoute restricted={true}  path="/login" component={Login} />
 
         <PrivateRoute path="/checkout" component={Checkout} />

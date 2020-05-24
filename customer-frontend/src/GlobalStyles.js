@@ -27,17 +27,16 @@ export const SubTitleItem = styled.div`
   padding: 35px 0 20px 0; 
 
   h2 {
-    @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-    font-family: 'Raleway', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500&display=swap');
+    font-family: 'Hind Siliguri', sans-serif;
     font-weight: 400;
   }
 `;
 
 
 export const Title = styled.h2`
-  @import url('https://fonts.googleapis.com/css?family=Raleway:600&display=swap');
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap');
+  font-family: 'Hind Siliguri', sans-serif;
   font-size: ${props => props.size || '16px'};
   color: black;
 
@@ -47,8 +46,8 @@ export const Title = styled.h2`
 `;
 
 export const SmallText = styled.h3`
-  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-  font-family: 'Raleway', sans-serif;
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500&display=swap');
+  font-family: 'Hind Siliguri', sans-serif;
   font-weight: 400;
   color: #999999;
   font-size: 16px;
@@ -67,8 +66,8 @@ export const SecondaryLink = styled(Link)`
 `;
 
 export const BlackButton = styled.button`
-  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-  font-family: 'Raleway', sans-serif;
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500&display=swap');
+  font-family: 'Hind Siliguri', sans-serif;
   background-color: black;
   color: white;
   border: none;
