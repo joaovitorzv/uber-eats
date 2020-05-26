@@ -74,10 +74,7 @@ export const Order = styled.div`
     display: flex;
     align-items: center;
     padding: .5% 0; 
-    
-    svg {
-      margin-right: 5px;
-    }
+  
 
     h3 {
       margin: 5px;

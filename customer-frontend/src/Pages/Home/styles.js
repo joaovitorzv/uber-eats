@@ -34,10 +34,6 @@ export const FilterButton = styled.div `
   margin-right: 5px;
   border-radius: 50px;
   cursor: pointer;
-
-  svg {
-    margin-right: 5px;
-  }
 `;
 
 export const RestaurantsGrid = styled.div`

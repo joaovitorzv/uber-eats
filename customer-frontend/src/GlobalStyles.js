@@ -13,6 +13,10 @@ export default createGlobalStyle`
 
   :focus {outline:none;}
   ::-moz-focus-inner {border:0;}
+
+  svg {
+    margin-right: 5px;
+  }
 }
 
   
@@ -39,10 +43,6 @@ export const Title = styled.h2`
   font-family: 'Hind Siliguri', sans-serif;
   font-size: ${props => props.size || '16px'};
   color: black;
-
-  svg {
-    margin-right: 10px;
-  }
 `;
 
 export const SmallText = styled.h3`

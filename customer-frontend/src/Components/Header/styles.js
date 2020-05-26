@@ -21,10 +21,6 @@ export const LocationInput = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 50px;
-
-  svg {
-    margin-right: 5px;
-  }
 `;
 
 export const DeliverTime = styled.div`
@@ -32,10 +28,7 @@ export const DeliverTime = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 50px;
-  
-  svg {
-    margin-right: 5px;
-  }
+
 `;
 
 export const SearchOptions = styled.div`
@@ -50,10 +43,6 @@ export const Search = styled.button`
   display: flex;
   align-items: center;
   margin-right: 40px;
-
-  svg {
-    margin-right: 5px;
-  }
 `;
 
 export const CustomerButton = styled.button`
@@ -62,13 +51,23 @@ export const CustomerButton = styled.button`
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  
+  display: flex;
+  align-items: center;
 `;
 
 export const ToggleMenuContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const ToggleMenu = styled.div`
+  margin-top: 2%;
+  display: ${props => props.toggleMenu};
+  position: fixed;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
+  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
 
   ul {
     list-style: none;
@@ -92,17 +91,13 @@ export const ToggleMenu = styled.div`
   }
 
   .option-icon {
-    padding: 2px 7px;
+    padding: 5px 7px;
     background-color: #ebf0ed;
     margin-right: 10px;
     border-radius: 40px;
-  }
 
-  margin-top: 10px;
-  display: ${props => props.toggleMenu};
-  position: fixed;
-  background-color: white;
-  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
-  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
-  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.17);
+    svg {
+      margin: 0;
+    }
+  }
 `;

@@ -4,6 +4,7 @@ export const BasketButton = styled.button`
   background-color: white;
   margin-right: 40px;
   border: none;
+  font-weight: bold;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -14,9 +15,6 @@ export const BasketButton = styled.button`
     color: #21a453;
   }
   
-  svg {
-    margin-right: 10px;
-  }
 `;
 
 export const Container = styled.div`

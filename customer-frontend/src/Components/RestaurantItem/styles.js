@@ -13,7 +13,7 @@ export const Container = styled.div`
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 12px;
     color: #5e5e5e;
-    padding-bottom: 10px;
+    padding: 5px 0 10px 0;
   }
 
   .title-container {
