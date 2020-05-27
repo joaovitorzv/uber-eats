@@ -15,10 +15,26 @@ module.exports = {
       return res.status(400).json({ error: 'This restaurant not exists' });
     }
 
-    const { items } = req.body;
+    let { items } = req.body;
 
     const items_id = items.map(item => item.item_id);
     const items_quantity = items.map(item => item.quantity)
+    
+    console.log(items_id);
+
+    const itemTitle = [];
+    for (i in items_id) {
+      const item = await Item.findOne({
+        where: { id: items_id[i] }
+      });
+      itemTitle.push(item.title)
+    }
+
+    for (i in itemTitle) {
+
+      console.log(itemTitle[i]);
+      items[i].item_name = itemTitle[i]
+    }
 
     let itemsPrice = [];
     for (i in items_id) {
