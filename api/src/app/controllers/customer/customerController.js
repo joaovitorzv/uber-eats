@@ -4,7 +4,7 @@ const Restaurant = require('../../models/Restaurant');
 
 module.exports = {
   async index(req, res) {
-   /* const customer = await Customer.findOne({
+    const customer = await Customer.findOne({
       where: { id: req.userId },
       attributes: {
         exclude: ['password_hash']
@@ -12,42 +12,22 @@ module.exports = {
     });
 
     if (!customer) {
-      return res.status(400).json({ errror: 'This customer not exists' });
+      return res.status(400).json({ error: 'This customer not exists' });
     }
 
     const pastOrders = await Order.findAll({
       where: { customer_id: customer.id },
-      include: [
-        {
-          model: Restaurant, as: 'Restaurant',
-          attributes: [
-            'id',
-            'restaurant_name',
-          ]
-        }, 
-        { 
-          model: Menu, as: 'Menus',
-          attributes: [
-            'banner_path'
-          ]
-        }
-      ]
-    });*/
-
-    const orders = await Order.findAll({
-      include: [
-        {
-          model: Menu, as: 'Menu',
-          attributes: [
-            "banner_path"
-          ]
-        },
-        {
-          model: Restaurant, as: 'Restaurant'
-        }
-      ]
+      include: [{ 
+        model: Restaurant, as: 'restaurant',
+        attributes: [
+          "id",
+          "restaurant_name",
+          "banner_path"
+        ]
+      }]
     });
+
   
-    return res.json({ orders });
+    return res.json({ customer, pastOrders });
   }
 }
