@@ -1,18 +1,27 @@
 const Item = require('../../models/Item');
-const Menu = require('../../models/Menu');
-
+const Restaurant = require('../../models/Restaurant');
 module.exports = {
   async index(req, res) {
-    const { id } = req.params;
+    const restaurant_id = req.params.id;
 
-    const menu = await Menu.findOne({
-      where: { restaurant_id: id }
+    const restaurant = await Restaurant.findOne({
+      where: { id: restaurant_id },
+      attributes: {
+        exclude: [
+          'password_hash',
+          'email',
+          'name',
+          'active',
+          'createdAt',
+          'updatedAt'
+        ]
+      }
     });
 
-   const items = await Item.findAll({
-      where: { menu_id: menu.id },
+    const items = await Item.findAll({
+      where: { restaurant_id }
     });
 
-    return res.json({ menu, items });
+    return res.json({ restaurant, items });
   }
 }

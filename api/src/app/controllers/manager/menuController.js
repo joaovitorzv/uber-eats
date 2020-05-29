@@ -1,18 +1,7 @@
-const Yup = require('yup');
-const Menu = require('../../models/Menu');
 const Restaurant = require('../../models/Restaurant');
+const Yup = require('yup');
 
 module.exports = {
-  async index(req, res) {
-    const restaurant_id = req.userId;
-
-    const menu = await Menu.findOne({
-      where: { restaurant_id }
-    });
-
-    return res.json(menu);
-  },
-  
   async store(req, res) {
     const restaurant_id = req.userId;
 
@@ -28,26 +17,23 @@ module.exports = {
     const logo = req.files['logo'][0];
     const banner = req.files['banner'][0];
 
+    if (!logo || !banner) {
+      return res.status(400).json({ error: 'Missing logo or banner' });
+    }
+    
     const { description, delivery_price } = req.body;
 
-    const menu = await Menu.create({
-      restaurant_id,  
+    const update = await Restaurant.update({
+      active: true,
       description,
       delivery_price,
       logo_path: logo.filename,
       banner_path: banner.filename
-    });
-
-    const restaurant = await Restaurant.findOne({
+    },{
       where: { id: restaurant_id }
     });
 
-    const update = await restaurant.update({
-      active: true
-    });
-    console.log(update);
-
-    return res.json(menu);
+    return res.json(update);
   }, 
 
   async update(req, res) {
@@ -62,13 +48,16 @@ module.exports = {
       return res.status(400).json({ error: 'Form validation error' });
     }
 
-    const menu = await Menu.findOne({
-      where: { restaurant_id }
-    });
+    const { description, delivery_price }  = req.body
 
-    const updates = {
-      description: req.body.description,
-      delivery_price: req.body.delivery_price,
+    let updates = {};
+
+    if (description) {
+      updates.description = description;
+    }
+
+    if (delivery_price) {
+      updates.delivery_price = delivery_price;
     }
 
     if (req.files['logo']) {
@@ -81,7 +70,11 @@ module.exports = {
       updates.banner_path = banner.filename;
     }
 
-    const update = await menu.update(updates);
+    const restaurant = await Restaurant.findOne({
+      where: {id: restaurant_id },
+    })
+
+    const update = await restaurant.update(updates);
 
     return res.json(update);
   }

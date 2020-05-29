@@ -16,12 +16,12 @@ const authMiddleware = require('../app/middlewares/auth');
 routes.post('/signup', signupController.store);
 routes.post('/session', sessionController.store);
 
-routes.use(authMiddleware);
-
 routes.get('/restaurants', restaurantsController.index);
 routes.get('/restaurants/:id/menu', menuController.index);
-routes.post('/restaurants/:id/order', orderController.store);
 
+routes.use(authMiddleware);
+
+routes.post('/restaurants/:id/order', orderController.store);
 routes.get('/informations', customerController.index)
 
 module.exports = routes;

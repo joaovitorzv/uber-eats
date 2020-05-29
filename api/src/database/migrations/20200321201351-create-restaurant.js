@@ -50,11 +50,32 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+
+      description: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+
+      delivery_price: {
+        type: Sequelize.FLOAT,
+        allowNull: true,
+      },
+
+      logo_path: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+
+      banner_path: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
     
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      
       updated_at: {
         type: Sequelize.DATE,
         allowNull: false,

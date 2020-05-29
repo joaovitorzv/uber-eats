@@ -10,9 +10,9 @@ module.exports = {
           allowNull: false,
         },
 
-        menu_id: {
+        restaurant_id: {
           type: Sequelize.INTEGER,
-          references: { model: 'menus', key: 'id' },
+          references: { model: 'restaurants', key: 'id' },
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
           allowNull: false,

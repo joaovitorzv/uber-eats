@@ -13,7 +13,11 @@ class Restaurant extends Model {
       restaurant_name: DataTypes.STRING,
       restaurant_address: DataTypes.STRING,
       restaurant_city: DataTypes.STRING,
-      culinary: DataTypes.STRING
+      culinary: DataTypes.STRING,
+      description: DataTypes.STRING,
+      delivery_price: DataTypes.FLOAT,
+      logo_path: DataTypes.STRING,
+      banner_path: DataTypes.STRING,
     }, {
       sequelize
     });

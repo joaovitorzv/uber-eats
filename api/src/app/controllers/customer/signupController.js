@@ -24,11 +24,6 @@ module.exports = {
       district 
     } = req.body;
 
-    console.log({email,  name,
-      password,
-      address,
-      district})
-
     if (await Customer.findOne({ where: { email }})) {
       return res.status(400).json({ error: 'This email is already registered '});
     }

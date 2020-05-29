@@ -3,6 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class Item extends Model {
   static init(sequelize) {
     super.init({
+      restaurant_id: DataTypes.INTEGER,
       title: DataTypes.STRING,
       description: DataTypes.STRING,
       price: DataTypes.FLOAT,
@@ -15,9 +16,9 @@ class Item extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Menu, {
-      foreignKey: 'menu_id',
-      as: 'menu'
+    this.belongsTo(models.Restaurant, {
+      foreignKey: 'restaurant_id',
+      as: 'restaurant'
     });
   };
 };

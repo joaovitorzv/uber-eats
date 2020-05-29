@@ -2,7 +2,7 @@ const Restaurant = require('../../models/Restaurant');
 const Dashboard = require('../../models/Dashboard');
 const Yup = require('yup');
 
-class signupController {
+module.exports = {
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -47,8 +47,7 @@ class signupController {
       restaurant_id: restaurant.id
     });
 
-    return res.json(restaurant);
+    return res.status(204).json();
   }
 }
 
-module.exports = new signupController();

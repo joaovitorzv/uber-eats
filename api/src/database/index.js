@@ -3,7 +3,6 @@ const dbConfig = require("../config/database");
 
 // Manager models
 const Restaurant = require('../app/models/Restaurant');
-const Menu = require('../app/models/Menu');
 const Item = require('../app/models/Item');
 const Dashboard = require('../app/models/Dashboard');
 
@@ -14,7 +13,7 @@ const Customer = require('../app/models/Customer');
 // Core models
 const Order = require('../app/models/Order');
 
-const models = [Restaurant, Menu, Item, Dashboard, Customer, Order];
+const models = [Restaurant, Item, Dashboard, Customer, Order];
 
 class Database {
   constructor() {

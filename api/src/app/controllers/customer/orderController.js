@@ -1,38 +1,32 @@
 const Order = require('../../models/Order');
 const Item = require('../../models/Item');
-const Menu = require('../../models/Menu');
 
 module.exports = {
   async store(req, res) {
     const customer_id = req.userId;
     const restaurant_id = req.params.id;
 
-    const menu = await Menu.findOne({
-      where: { restaurant_id }
-    });
-
-    if (!menu) {
-      return res.status(400).json({ error: 'This restaurant not exists' });
-    }
-
     let { items } = req.body;
 
     const items_id = items.map(item => item.item_id);
     const items_quantity = items.map(item => item.quantity)
-    
-    console.log(items_id);
 
     const itemTitle = [];
     for (i in items_id) {
       const item = await Item.findOne({
-        where: { id: items_id[i] }
+        where: { 
+          id: items_id[i],
+          restaurant_id  
+        }
       });
+
+      if (!item) {
+        return res.json({ error: `Item ${items_id[i]} not exits`});
+      }
       itemTitle.push(item.title)
     }
 
     for (i in itemTitle) {
-
-      console.log(itemTitle[i]);
       items[i].item_name = itemTitle[i]
     }
 

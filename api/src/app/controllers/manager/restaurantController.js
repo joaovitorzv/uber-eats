@@ -1,5 +1,4 @@
 const Restaurant = require('../../models/Restaurant');
-const Menu = require('../../models/Menu');
 const Yup = require('yup');
 
 module.exports = {
@@ -7,26 +6,13 @@ module.exports = {
     const restaurant_id = req.userId;
 
     const restaurant = await Restaurant.findOne({
-      where: { id: restaurant_id }
+      where: { id: restaurant_id },
+      attributes: {
+        exclude: ['password_hash']
+      }
     });
 
-    if (restaurant.active) {
-      restaurantInfo = await Menu.findOne({
-        where: { restaurant_id },
-        include: [
-          { 
-            model: Restaurant, as: 'restaurant',
-            attributes: { exclude: ['password_hash']},
-            required: true, 
-          },
-        ],
-      });
-
-    } else {
-      restaurantInfo = restaurant;
-    }
-
-    return res.json(restaurantInfo);
+    return res.json(restaurant);
   },
 
   async store(req, res) {

@@ -1,33 +1,26 @@
 const Item = require('../../models/Item');
-const Menu = require('../../models/Menu');
+const Restaurant = require('../../models/Restaurant');
 
 const Yup = require('yup');
 
 module.exports = {
   async index(req, res) {
     const restaurant_id = req.userId;
-    const menu = await Menu.findOne({
-      where: { restaurant_id }
-    });
-
-    if (menu) { 
-      const items = await Item.findAll({
-        where: { menu_id: menu.id }
-      });
-
-      return res.json(items);
-    }
     
-    return res.json("To see your items fill out all the forms below");
+    const items = await Item.findAll({
+      where: { restaurant_id: restaurant_id }
+    })
+    
+    return res.json(items);
   },
 
   async store(req, res) {
     const restaurant_id = req.userId;
-    const menu = await Menu.findOne({
-      where: { restaurant_id }
+    const restaurant = await Restaurant.findOne({
+      where: { id: restaurant_id }
     });
 
-    if (!menu) {
+    if (!restaurant.active) {
       return res.status(401).json({ error: 'You need to configure your address settings to create items' });
     }
 
@@ -42,6 +35,11 @@ module.exports = {
     }
 
     const thumbnail = req.file;
+
+    if (!thumbnail) {
+      return res.status(400).json({ error: 'Missing thumbnail image'});
+    }
+
     const {
       title,
       description,
@@ -49,7 +47,7 @@ module.exports = {
     } = req.body;
 
     const item = await Item.create({
-      menu_id: menu.id,
+      restaurant_id: restaurant_id,
       title,
       description,
       price,
