@@ -27,7 +27,7 @@ routes.post('/sessions', sessionController.store);
 
 /*
 * Below this auth middleware 
-* all routes are private  and requires jwt token  
+* all routes are private and requires jwt token  
 */
 
 routes.use(authMiddleware);

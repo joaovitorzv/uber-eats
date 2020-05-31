@@ -31,6 +31,11 @@ module.exports = {
           type: Sequelize.FLOAT,
           allowNull: false,
         },
+
+        fees: {
+          type: Sequelize.FLOAT,
+          allowNull: false,
+        },
   
         delivery_price: {
           type: Sequelize.FLOAT,

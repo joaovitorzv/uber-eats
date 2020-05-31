@@ -7,6 +7,7 @@ class Order extends Model {
       restaurant_id: DataTypes.INTEGER,
       items: DataTypes.ARRAY(DataTypes.JSONB),
       subtotal: DataTypes.FLOAT,
+      fees: DataTypes.FLOAT,
       delivery_price: DataTypes.FLOAT,
       total: DataTypes.FLOAT,
     },{ 

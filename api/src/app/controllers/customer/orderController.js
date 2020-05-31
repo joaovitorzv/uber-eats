@@ -65,11 +65,22 @@ module.exports = {
     let total = itemQuantitySum.reduce(reducer, restaurant.delivery_price); 
     total = Math.round((total + Number.EPSILON) * 100) / 100;
 
+    // For orders under R$15 add a R$ 1.50 fee to order
+    let smallOrder;
+    subtotal < 15 ? smallOrder = 1.50 : smallOrder = 0;
+
+    // Service fee (5% of subtotal) 
+    const serviceFee = ((subtotal * 5) / 100).toFixed(2);
+
+    const totalFees = parseFloat(smallOrder) + parseFloat(serviceFee);
+    total += totalFees;
+
     const order = await Order.create({
       customer_id: customer_id,
       restaurant_id,
       items,
       subtotal,
+      fees: totalFees,
       delivery_price: restaurant.delivery_price,
       total
     })
