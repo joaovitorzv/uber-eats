@@ -139,11 +139,12 @@ export const PlaceOrder = styled.button`
 export const ClearBasket = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  padding-top: 10%;
 
-
-  p {
-    margin-bottom: 5%;
+  button {
+    width: 100%;
+    margin-top: 1%;
   }
-
 `;

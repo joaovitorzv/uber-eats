@@ -11,18 +11,18 @@ import {
 
 import { Title } from '../../GlobalStyles';
 
-export default function RestaurantItem() {
+export default function RestaurantItem({ restaurant }) {
   return (
     <Container>
-      <LinkToRestaurant to="/restaurant/name">
+      <LinkToRestaurant to={`/restaurant/${restaurant.id}`}>
         <Thumbnail>
-          <Image src={Img} />
+          <Image src={`http://localhost:3333/files/${restaurant.banner_path}`} />
         </Thumbnail>
 
         <div className="title-container">
           <div>
-            <Title size="17px">McDonald's - Guarulhos Paulo Faccini</Title>
-            <p>$7.90 Delivery Fee &middot; 15–25 min &middot; $$</p>
+            <Title size="17px">{restaurant.restaurant_name}</Title>
+            <p>${restaurant.delivery_price} Delivery Fee &middot; 15–25 min &middot; $$</p>
           </div>
 
           <div className="rating">
@@ -30,7 +30,7 @@ export default function RestaurantItem() {
           </div>
         </div>
 
-        <p>Burgers</p>
+        <p>{restaurant.culinary}</p>
       </LinkToRestaurant>
     </Container>
   )

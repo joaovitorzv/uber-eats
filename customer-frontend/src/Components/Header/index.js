@@ -71,18 +71,41 @@ export default function Header() {
       
       {isAuthenticated() ?
       <ToggleMenuContainer>
-        {window.onscroll = function() { setToggleMenu('none') }}
+       
         <Title onClick={() => toggleMenu === 'none' ? setToggleMenu('block') : setToggleMenu('none')}>
           <CustomerButton><FaUser size={20} />{getFirstName()}</CustomerButton>
         </Title>
         <ToggleMenu toggleMenu={toggleMenu}>
            <ul>
-           <Anchor to="/1/orders"><li><div className="option-icon"><FaReceipt size={12}/></div>Orders</li></Anchor>
-            <li><div className="option-icon"><FaHeart size={12}/></div>Favorites</li>
-            <li><div className="option-icon"><FaWallet size={12}/></div>Wallet</li>
-            <li><div className="option-icon"><FaRegLifeRing size={12}/></div>Help</li>
-            <li><div className="option-icon"><FaUser size={12}/></div>Account</li>
-            <li><div className="option-icon"><AiTwotoneTag size={12}/></div>Promotions</li>
+           <Anchor to="/user#orders">
+              <li>
+                <div className="option-icon"><FaReceipt size={12}/></div>
+                Orders
+              </li>
+            </Anchor>
+            <li>
+              <div className="option-icon">
+                <FaHeart size={12}/></div>
+                Favorites
+            </li>
+            <li>
+              <div className="option-icon"><FaWallet size={12}/></div>
+              Wallet
+            </li>
+            <li>
+              <div className="option-icon"><FaRegLifeRing size={12}/></div>
+              Help
+            </li>
+            <Anchor to="/user#profile">
+              <li>
+                <div className="option-icon"><FaUser size={12}/></div>
+                Account
+              </li>
+            </Anchor>
+            <li>
+              <div className="option-icon"><AiTwotoneTag size={12}/></div>
+              Promotions
+            </li>
             <li onClick={() => SignOut()} >Sign Out</li>
           </ul>
         </ToggleMenu>

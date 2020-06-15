@@ -3,8 +3,10 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.header`
   width: 100%;
   padding: 2px 40px;
-  display: flex;
+  display: flex;  
   justify-content: space-between;
+  position: fixed;
+  background-color: white;
 `;
 
 export const Logo = styled.img`
@@ -53,6 +55,7 @@ export const CustomerButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin-right: 30px;
 `;
 
 export const ToggleMenuContainer = styled.div`
@@ -83,6 +86,11 @@ export const ToggleMenu = styled.div`
 
     display: flex;
     align-items: center;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
 
     &:hover {
       background-color: #ebf0ed;

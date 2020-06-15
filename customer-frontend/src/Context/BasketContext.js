@@ -26,7 +26,7 @@ export function useBasket() {
   const { basket, setBasket } = context;
   const { showBasket, setShowBasket } = context;
 
-  return { basket, setBasket, showBasket, setShowBasket};
+  return { basket, setBasket, showBasket, setShowBasket };
 }
 
 export const BasketConsumer = BasketContext.Consumer;

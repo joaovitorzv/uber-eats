@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const FormContainer = styled.div`
   width: 600px;
   padding-bottom: 3%;
-  margin: 0 auto;
+  margin: 3% auto;
 
   .logo-container {
     display: flex;

@@ -8,41 +8,30 @@ import {
   OrderAgain
 } from './styles';
 
-export default function Orders() {
+export default function Orders({ order }) {
   return (
   <OrdersContainer>
     <Order>
       <OrderDetails>
-        <RestaurantThumbnail />
+        <RestaurantThumbnail banner={order.restaurant.banner_path} />
         <div className="details">
-          <h2>McDonalt's - Av. Faria Lima</h2>
-          <p>3 items for R$ 0,00 &middot; 25 mai. 11:01</p>
+          <h2>{order.restaurant.restaurant_name}</h2>
+          <p>{(order.items).length} {(order.items).length > 1 ? "items" : "item"} for R$ {order.subtotal} &middot; 25 mai. 11:01</p>
 
-          <div className="items">
-            <div className="items-quantity">
-              <div className="quantity">1</div>
-            </div>
+          {order.items.map(item => (
+            <div className="items" key={item.item_id}>
+              <div className="items-quantity">
+                <div className="quantity">{item.quantity}</div>
+              </div>
 
-            <div className="item-detail">
-              <h3>McOferta McPicanha</h3>
-              <p>
-                McPicanha • Molho de Picanha • Queijo Coalho • Carne Picanha • Tomate • Cebola Crispy • Mix Folha • Pão Brioche Gergilim • Batata Cheddar Bacon • Fanta Guaraná 
-              </p>
+              <div className="item-detail">
+                <h3>{item.item_name}</h3>
+                <p>{item.item_description}</p>
+              </div>
             </div>
-          </div>
+          ))}
 
-          <div className="items">
-            <div className="items-quantity">
-              <div className="quantity">2</div>
-            </div>
 
-            <div className="item-detail">
-              <h3>McOferta McPicanha</h3>
-              <p>
-                McPicanha • Molho de Picanha • Queijo Coalho • Carne Picanha • Tomate • Cebola Crispy • Mix Folha • Pão Brioche Gergilim • Batata Cheddar Bacon • Fanta Guaraná 
-              </p>
-            </div>
-          </div>
         </div>
 
         

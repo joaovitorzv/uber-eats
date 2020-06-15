@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Header from '../../Components/Header';
 import Item from '../../Components/Item';
@@ -22,34 +22,43 @@ import {
 
 import { AiFillTag } from 'react-icons/ai';
 
-export default function Restaurant({ history }) {
-  const items = [
-    {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 1},
-    {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 2},
-    {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 3},
-    {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 4},
-    {title: 'Orignal smash', description: 'Foda em man descrisão aq cheddar molho de pinto e picles', price: 12.99, id: 5},
-  ]
+import api from '../../services/api';
+
+export default function Restaurant(props) {
+  const { id } = props.match.params
+  const [restaurant, setRestaurant] = useState({});
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.get(`/restaurants/${id}/menu`);
+      setRestaurant(response.data.restaurant);
+      setItems(response.data.items);
+    }
+
+    fetchData();
+  }, []);
+
   const response = {id: 2, name: 'The house', delivery: 7.98}
 
   return (
     <BasketProvider>
       <HeaderContainer>
         <Header />
-        <Basket restaurant={response} history={history}/>
+        <Basket restaurant={response} history={props.history}/>
       </HeaderContainer>
 
-      <BannerContainer>
+      <BannerContainer banner={restaurant.banner_path}>
         <RestaurantInfo>
-          <Title size="30px">McDonald's - Guarulhos Paulo Faccini</Title>
+          <Title size="30px">{restaurant.restaurant_name}</Title>
 
           <div className="basic-info">
-            <p>$ &middot; Burgers</p>
-            <p>20-30 Min &middot; R$7.99 Delivery Fee</p>
+            <p>$ &middot; {restaurant.culinary}</p>
+            <p>20-30 Min &middot; ${restaurant.delivery_price} Delivery Fee</p>
           </div>
 
           <div className="address">
-            <p>Av. Paulo Faccini, 1058 - Macedo, São Paulo 07115-060 &middot; <PrimaryLink href="#">More info</PrimaryLink></p>
+            <p>{restaurant.restaurant_address} &middot; <PrimaryLink href="#">More info</PrimaryLink></p>
           </div>
         </RestaurantInfo>
       </BannerContainer>
@@ -60,8 +69,6 @@ export default function Restaurant({ history }) {
         </SubTitleItem>
 
         <GridItems>
-          <Item id={6} price="4.99" description="good sandwich" title="Sandwich"/>
-          <Item id={7} price="4.99" description="good sandwich" title="Sandwich"/>
         </GridItems>
 
         <SubTitleItem>
@@ -76,6 +83,7 @@ export default function Restaurant({ history }) {
             description={item.description} 
             price={item.price} 
             id={item.id}
+            thumbnail={item.thumbnail_path}
           />
         ))}
         </GridItems>

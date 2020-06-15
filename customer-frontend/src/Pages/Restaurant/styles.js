@@ -8,11 +8,12 @@ export const HeaderContainer = styled.div`
 
 export const BannerContainer = styled.div`
   height: 380px;
-  background: url(${Banner}) no-repeat center center;
+  background: url(${props => `http://localhost:3333/files/${props.banner}`}) no-repeat center center;
   background-size: cover;
   
   display: flex;
   align-items: center;
+  margin-top: 3%;
 
 `;
 

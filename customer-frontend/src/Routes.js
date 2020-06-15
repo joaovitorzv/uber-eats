@@ -9,7 +9,7 @@ import Restaurant from './Pages/Restaurant';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
 import Checkout from './Pages/Checkout';
-import Orders from './Pages/Orders';
+import User from './Pages/User';
 
 
 export default function Routes() {
@@ -22,7 +22,7 @@ export default function Routes() {
         <PublicRoute restricted={true}  path="/login" component={Login} />
 
         <PrivateRoute path="/checkout" component={Checkout} />
-        <PrivateRoute path="/:user/orders" component={Orders} />
+        <PrivateRoute path="/user" component={User} />
       </Switch>
     </BrowserRouter>
   )

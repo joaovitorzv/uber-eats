@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import Thumbnail from '../../assets/thumb-icon.jpeg';
-
 export const OrdersContainer = styled.div`
 display: flex;
 flex-direction: column;
@@ -63,7 +61,7 @@ export const RestaurantThumbnail = styled.div`
 width: 330px;
 height: 150px;
 
-background: url(${Thumbnail}) no-repeat center center;
+background: url(${props => `http://localhost:3333/files/${props.banner}`}) no-repeat center center;
 background-size: cover;
 overflow: hidden;
 `;

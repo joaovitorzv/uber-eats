@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div`
-  display: flex;
-`;
+export const HeaderContainer = styled.div``;
 
 export const Container = styled.div`
   margin: 0 auto;

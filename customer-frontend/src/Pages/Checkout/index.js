@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Header from '../../Components/Header';
 
@@ -9,7 +9,23 @@ import { FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { MdShoppingBasket } from 'react-icons/md';
 import Cash from '../../assets/cash.png';
 
+import api from '../../services/api';
+
 export default function Checkout({ history }) {
+  const [customer, setCustomer] = useState({});
+  
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.get('/informations', {
+        headers: {
+          authorization: localStorage.getItem('authorization')
+        }
+      });
+
+      setCustomer(response.data.customer);
+    }
+    fetchData();
+  }, []); 
 
   const restaurant = JSON.parse(localStorage.getItem('restaurantInfo'));
   const items = JSON.parse(localStorage.getItem('basket'));
@@ -25,7 +41,6 @@ export default function Checkout({ history }) {
   let total = (parseFloat(serviceFee) + parseFloat(subtotal) + restaurant.delivery).toFixed(2);
   if (smallorder === true) {
     total += 3.00;
-    console.log('maluco')
   }
 
   return ( 
@@ -39,7 +54,7 @@ export default function Checkout({ history }) {
             
             <div className="address">
               <div className="details">
-                <h3>Av. Brg. Faria Lima - Pinheiros, São Paulo - SP, Brazil</h3>
+                <h3>{customer.address}</h3>
                 <p>Delivery to door, 2290</p>
                 <button>Add delivery instructions</button>
               </div>
@@ -69,7 +84,7 @@ export default function Checkout({ history }) {
             </div>
 
             <div className="order-detail">
-              <FaMapMarkerAlt size={20}/> <h3>Meet at door, Avenida Brigadeiro Faria Lima</h3>
+              <FaMapMarkerAlt size={20}/> <h3>Meet at door, {customer.address}</h3>
             </div>
 
             <div className="receipt">
@@ -113,11 +128,13 @@ export default function Checkout({ history }) {
             </PlaceOrder>
           </Order>
       </Details>
-      : 
-      <ClearBasket onClick={() => history.push('/')}>
-        <h2>You’re not picky.</h2>
-        <p>You just have discerning taste.</p>
-        <BlackButton>Back to restaurants</BlackButton>
+      :
+      <ClearBasket>
+          <h2>You’re not picky.</h2>
+          <p>You just have discerning taste.</p>
+          <BlackButton onClick={() => history.push('/')}>
+            Back to restaurants
+          </BlackButton>
       </ClearBasket>
     }
     </Container>

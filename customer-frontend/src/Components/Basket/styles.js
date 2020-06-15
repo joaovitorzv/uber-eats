@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 export const BasketButton = styled.button`
   background-color: white;
-  margin-right: 40px;
+  
   border: none;
   font-weight: bold;
   display: flex;
+  position: fixed;
   align-items: center;
   cursor: pointer;
+  right: 15px;
+  top: 28px;
 
-  
   p {
     font-size: 17px;
     color: #21a453;

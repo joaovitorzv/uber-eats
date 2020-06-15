@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Header from '../../Components/Header';
 import RestaurantItem from '../../Components/RestaurantItem';
@@ -20,7 +20,22 @@ import { SubTitleItem, Title, SmallText} from '../../GlobalStyles';
 import { FaBiking } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 
+import api from '../../services/api';
+
 export default function Home({ history }) {
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.get('/restaurants');
+      setRestaurants(response.data);
+    }
+
+    fetchData();
+  }, []);
+
+  console.log(restaurants)
+
   return (
     <BasketProvider>
       <HeaderContainer>
@@ -42,9 +57,6 @@ export default function Home({ history }) {
         </SubTitleItem>
         
         <RestaurantsGrid>
-          <RestaurantItem />
-          <RestaurantItem />
-          <RestaurantItem />
         </RestaurantsGrid>
 
         <SubTitleItem>
@@ -53,11 +65,9 @@ export default function Home({ history }) {
         </SubTitleItem>
 
         <RestaurantsGrid>
-          <RestaurantItem />
-          <RestaurantItem />
-          <RestaurantItem />
-          <RestaurantItem />
-          <RestaurantItem />
+          {restaurants.map(restaurant => (
+            <RestaurantItem restaurant={restaurant} key={restaurant.id} />
+          ))}
         </RestaurantsGrid>
       </Container>
     </BasketProvider>

@@ -49,7 +49,7 @@ export const Thumbnail = styled.div`
   width: 170px;
   height: 150px;
 
-  background: url(${ThumbnailPic}) no-repeat center center;
+  background: url(${props => `http://localhost:3333/files/${props.thumbnail}`}) no-repeat center center;
   background-size: cover;
 
   display: flex;
