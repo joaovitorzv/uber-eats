@@ -96,6 +96,4 @@ $ react-native run-android (or run-ios)
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-*Fique a vontade para dar um fork neste repo e alterar oque quiser* 
-
 <p align="center">Feito com ❤️ por <strong>João vitor oliveira 👋</p>
