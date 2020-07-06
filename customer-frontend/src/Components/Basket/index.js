@@ -16,7 +16,7 @@ import {
   Title,
 } from '../../GlobalStyles';
 
-import { IoMdClose } from 'react-icons/io';
+import { IoMdClose } from 'react-icons/io'; 
 import { MdShoppingBasket } from 'react-icons/md';
 
 export default function Basket({ restaurant, history }) {
@@ -26,7 +26,6 @@ export default function Basket({ restaurant, history }) {
 
   function removeItem(itemId) {
     const item = newBasket.find(basketItem => basketItem.id === itemId);
-    console.log('item aqu ', item);
     if (item.quantity > 1) {
       const unitaryPrice = parseFloat(item.price / item.quantity).toFixed(2);
       item.quantity -= 1;
@@ -35,14 +34,20 @@ export default function Basket({ restaurant, history }) {
       localStorage.setItem('basket', JSON.stringify(newBasket));
       setBasket(newBasket);
     } else {
-    const findItemIndex = newBasket.findIndex(basketItem => basketItem.id === itemId);
-    newBasket.splice(findItemIndex, 1);
-    localStorage.setItem('basket', JSON.stringify(newBasket));
-    setBasket(newBasket);
+      const findItemIndex = newBasket.findIndex(basketItem => basketItem.id === itemId);
+      newBasket.splice(findItemIndex, 1);
+      
+      if (newBasket.length === 0) {
+        localStorage.removeItem('restaurantInfo')
+      } 
+      localStorage.setItem('basket', JSON.stringify(newBasket));
+      setBasket(newBasket);
     }
   }
 
-  if (basket.length > 0 && !(JSON.parse(localStorage.getItem('restaurantInfo'))) ) {
+  const restaurantOrdered = JSON.parse(localStorage.getItem('restaurantInfo'));
+
+  if (basket.length > 0 && !restaurantOrdered) {
     localStorage.setItem('restaurantInfo', JSON.stringify(restaurant));
   }
 

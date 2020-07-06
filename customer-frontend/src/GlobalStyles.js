@@ -75,6 +75,11 @@ export const BlackButton = styled.button`
   font-size: 14px;
   padding: 1% 0; 
   cursor: pointer;
+
+  &:hover {
+    background-color: #1c1c1c;
+    transition-duration: 200ms;
+  }
 `;
 
 export const ErrorText = styled.p`

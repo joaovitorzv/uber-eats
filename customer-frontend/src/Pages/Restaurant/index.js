@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import Item from '../../Components/Item';
 import Basket from '../../Components/Basket';
+import CancelBasket from '../../Components/CancelBasket';
 
 import BasketProvider from '../../Context/BasketContext';
 
@@ -25,6 +26,8 @@ import { AiFillTag } from 'react-icons/ai';
 import api from '../../services/api';
 
 export default function Restaurant(props) {
+  const restaurantInfo = JSON.parse(localStorage.getItem('restaurantInfo')) || []
+
   const { id } = props.match.params
   const [restaurant, setRestaurant] = useState({});
   const [items, setItems] = useState([]);
@@ -39,7 +42,11 @@ export default function Restaurant(props) {
     fetchData();
   }, []);
 
-  const response = {id: 2, name: 'The house', delivery: 7.98}
+  const response = {
+    id: restaurant.id, 
+    name: restaurant.restaurant_name, 
+    delivery: restaurant.delivery_price
+  }
 
   return (
     <BasketProvider>
@@ -75,15 +82,19 @@ export default function Restaurant(props) {
           <Title size="24px">Items</Title>
         </SubTitleItem>
 
+        {/*restaurantInfo.name !== undefined && restaurantInfo.name !== restaurant.restaurant_name*/ }
+
         <GridItems>
         {items.map(item => (
           <Item
             key={item.id}
+            restaurantId={restaurant.id}
             title={item.title} 
             description={item.description} 
             price={item.price} 
             id={item.id}
             thumbnail={item.thumbnail_path}
+            history={props.history}
           />
         ))}
         </GridItems>

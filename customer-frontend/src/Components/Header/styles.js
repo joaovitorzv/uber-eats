@@ -7,6 +7,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   position: fixed;
   background-color: white;
+  border-bottom: 3px solid #f0f0f0;
 `;
 
 export const Logo = styled.img`

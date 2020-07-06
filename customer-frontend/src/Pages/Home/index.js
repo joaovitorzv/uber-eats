@@ -55,9 +55,6 @@ export default function Home({ history }) {
           <Title size="28px">Free deliveries</Title>
           <SmallText>Your favorites food without delivery fee</SmallText>
         </SubTitleItem>
-        
-        <RestaurantsGrid>
-        </RestaurantsGrid>
 
         <SubTitleItem>
           <Title size="28px">When You're Hungry Now</Title>
