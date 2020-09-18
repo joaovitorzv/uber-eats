@@ -75,7 +75,7 @@ $ yarn install
 $ yarn sequelize db:migrate
 $ yarn dev
 ```
-Remember to configure the ``.env`` environment you can found the example of the variables [Here](api/.env)
+Dont forgot to configure the ``.env`` environment you can found the example of the variables [Here](api/.env)
 
 
 ***To run Frontend***
